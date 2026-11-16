@@ -22,6 +22,14 @@ git switch --no-track -c feature/district-selection origin/develop
 | 버그 수정 | `fix/photo-upload`           |
 | 문서 작업 | `docs/repository-guide`      |
 
+## 이슈 라벨 사용법
+
+- 이슈에 작업 유형 라벨(`feature`, `bug`, `docs`) 중 하나를 붙입니다.
+- 작업 영역이 분명하면 `design`, `frontend`, `backend`, `data` 중 주요 영역 하나를 함께 붙입니다.
+- README나 협업 가이드처럼 저장소 전체에 해당하는 문서 작업에는 `docs`만 붙입니다.
+
+예시: 자치구 선택 화면 구현 → `feature` + `frontend`
+
 ## 커밋과 PR 제목
 
 커밋 메시지와 PR 제목은 `type: short description` 형식을 사용합니다. 유형은 소문자로 쓰고, 설명은 무엇을 바꿨는지 영어 동사로 시작합니다.

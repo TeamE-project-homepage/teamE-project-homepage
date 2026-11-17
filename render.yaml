@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: bingo-backend
+    runtime: docker
+    plan: free
+    branch: main
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true

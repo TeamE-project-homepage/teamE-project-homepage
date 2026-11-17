@@ -1,6 +1,9 @@
 package com.teame.bingo.global.exception;
 
+import java.util.Arrays;
+
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
 public enum ErrorCode {
 
@@ -21,6 +24,13 @@ public enum ErrorCode {
         this.status = status;
         this.code = code;
         this.message = message;
+    }
+
+    public static ErrorCode from(HttpStatusCode statusCode) {
+        return Arrays.stream(values())
+                .filter(errorCode -> errorCode.status.value() == statusCode.value())
+                .findFirst()
+                .orElse(statusCode.is4xxClientError() ? INVALID_INPUT : INTERNAL_SERVER_ERROR);
     }
 
     public HttpStatus getStatus() {

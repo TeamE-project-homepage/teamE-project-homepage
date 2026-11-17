@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
@@ -88,6 +90,13 @@ class GlobalExceptionHandlerTest {
     }
 
     @Test
+    void responseStatusException() throws Exception {
+        mockMvc.perform(get("/test/status"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.error.code").value("COMMON_404"));
+    }
+
+    @Test
     void unexpectedException() throws Exception {
         mockMvc.perform(get("/test/unexpected"))
                 .andExpect(status().isInternalServerError())
@@ -113,6 +122,11 @@ class GlobalExceptionHandlerTest {
         @GetMapping("/test/too-large")
         void tooLarge() {
             throw new MaxUploadSizeExceededException(1);
+        }
+
+        @GetMapping("/test/status")
+        void responseStatus() {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
         @GetMapping("/test/unexpected")

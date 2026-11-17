@@ -1,6 +1,18 @@
 spring:
   application:
     name: bingo
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
 
 server:
   port: ${PORT:8080}

@@ -5,11 +5,13 @@ import java.util.Map;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.teame.bingo.global.response.ApiResponse;
+
 @RestController
 public class HealthController {
 
     @GetMapping("/health")
-    public Map<String, String> health() {
-        return Map.of("status", "UP");
+    public ApiResponse<Map<String, String>> health() {
+        return ApiResponse.ok(Map.of("status", "UP"));
     }
 }

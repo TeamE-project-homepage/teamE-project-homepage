@@ -1,5 +1,6 @@
 const MAX_FILE_SIZE_MB = 5;
 const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
+const FAKE_ANALYSE_DELAY_MS = 1500;
 
 const photoInput = document.getElementById("photo");
 const photoPreview = document.getElementById("photo-preview");
@@ -9,6 +10,7 @@ const errorBox = document.getElementById("photo-error");
 const errorText = document.getElementById("photo-error-text");
 
 let previewUrl = null;
+let analyseTimer = null;
 
 function showError(message) {
   errorText.textContent = message;
@@ -17,6 +19,14 @@ function showError(message) {
 
 function clearMessages() {
   errorBox.hidden = true;
+  loadingBox.hidden = true;
+}
+
+function cancelAnalysis() {
+  if (analyseTimer) {
+    clearTimeout(analyseTimer);
+    analyseTimer = null;
+  }
   loadingBox.hidden = true;
 }
 
@@ -56,6 +66,7 @@ function validatePhoto(file) {
 
 photoInput.addEventListener("change", () => {
   const file = photoInput.files[0];
+  cancelAnalysis();
   clearMessages();
 
   if (!file) {
@@ -80,10 +91,11 @@ analyseButton.addEventListener("click", () => {
   analyseButton.disabled = true;
   loadingBox.hidden = false;
 
-  setTimeout(() => {
+  analyseTimer = setTimeout(() => {
+    analyseTimer = null;
     loadingBox.hidden = true;
     analyseButton.disabled = false;
-  }, 1500);
+  }, FAKE_ANALYSE_DELAY_MS);
 });
 
 resetPreview();

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Disposal result | BinGo</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="has-bottom-nav">
+  <header class="site-header container">
+    <a class="logo" href="index.html">BinGo</a>
+    <a class="btn btn-secondary" href="login.html">Log in</a>
+  </header>
+
+  <main class="container">
+
+    <p><a href="items.html">&larr; Back</a></p>
+    <div class="district-bar"><span>District: (selected district)</span><a href="district.html">Change</a></div>
+    <h1>Item name</h1>
+
+    <section class="result-banner" aria-label="Disposal type">
+      <p>Throw it in</p>
+      <h2>Disposal type</h2>
+      <p class="badge">Recyclable / Not recyclable (text label)</p>
+    </section>
+    <p><button class="btn btn-block btn-secondary" type="button">Save guide</button></p>
+
+    <section class="section">
+      <h2>3 Steps</h2>
+      <ol class="steps">
+        <li class="step"><div class="step-image"></div><p>Step 1</p></li>
+        <li class="step"><div class="step-image"></div><p>Step 2</p></li>
+        <li class="step"><div class="step-image"></div><p>Step 3</p></li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>District information</h2>
+      <div class="info-box">
+        <dl class="info-list"><dt>Day</dt><dd>-</dd><dt>Time</dt><dd>-</dd><dt>Method</dt><dd>-</dd><dt>Source</dt><dd>-</dd></dl>
+      </div>
+    </section>
+
+    <p class="section"><a class="btn btn-block" href="#checklist">Check condition</a></p>
+
+  </main>
+
+  <footer class="site-footer container">
+    <p>Footer: disclaimer text, repository link</p>
+  </footer>
+
+  <div class="modal" id="checklist">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="checklist-title">
+      <div class="cluster" style="justify-content:space-between"><h2 id="checklist-title">Check condition</h2><a href="result.html" aria-label="Close">Close</a></div>
+      <p>Recyclable only if all are checked</p>
+      <label class="check-item"><input type="checkbox"> Checklist item</label>
+      <label class="check-item"><input type="checkbox"> Checklist item</label>
+      <label class="check-item"><input type="checkbox"> Checklist item</label>
+      <div class="cluster"><a class="btn btn-secondary" href="result.html">Not sure</a><a class="btn" href="result.html">Confirm</a></div>
+    </div>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Main"><a href="index.html">Home</a><a href="items.html">Search</a><a href="mypage.html">My Page</a></nav>
+</body>
+</html>

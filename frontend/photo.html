@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo upload | BinGo</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body class="has-bottom-nav">
+  <header class="site-header container">
+    <a class="logo" href="index.html">BinGo</a>
+    <a class="btn btn-secondary" href="login.html">Log in</a>
+  </header>
+
+  <main class="container">
+
+    <p><a href="index.html">&larr; Back</a></p>
+    <h1>Photo upload</h1>
+    <div class="dropzone">
+      <p>Guide text: one item per photo</p>
+      <label class="btn" for="photo">Choose photo</label>
+      <input id="photo" class="visually-hidden" type="file" accept="image/*">
+    </div>
+
+    <section class="section">
+      <h2>Preview</h2>
+      <div class="preview">photo preview</div>
+      <div class="cluster"><button class="btn" type="button">Analyse</button><a class="btn btn-secondary" href="photo.html">Choose another</a></div>
+    </section>
+
+    <section class="section">
+      <h2>States</h2>
+      <div class="state" role="status"><p>Loading state</p></div>
+      <div class="state" role="alert"><p>Error state: retry or search by name</p></div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer container">
+    <p>Footer: disclaimer text, repository link</p>
+  </footer>
+
+  <nav class="bottom-nav" aria-label="Main"><a href="index.html">Home</a><a href="items.html">Search</a><a href="mypage.html">My Page</a></nav>
+</body>
+</html>

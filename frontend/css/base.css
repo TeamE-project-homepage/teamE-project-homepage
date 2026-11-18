@@ -1,0 +1,36 @@
+/* BinGo base: reset + page layout only.
+   No visual design here (colors, fonts, icons). The UI designer's final design is applied later,
+   mostly by filling in the variables below. */
+:root {
+  --page-max: 960px;   /* max content width */
+  --gutter: 16px;      /* side padding */
+  --gap: 16px;         /* space between blocks */
+  --border: 1px solid #999;  /* placeholder outline so the layout is visible */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; line-height: 1.5; font-family: sans-serif; }
+img, svg { max-width: 100%; display: block; }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+a { color: inherit; }
+button, input, select { font: inherit; }
+
+/* page frame: header / main / footer stacked in one centered column */
+.container { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); }
+main { display: block; padding-block: var(--gap); }
+.section { margin-top: calc(var(--gap) * 2); }
+.section > h2 { margin-bottom: var(--gap); }
+.stack > * + * { margin-top: var(--gap); }
+.cluster { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: center; }
+
+/* responsive grid: 2 columns on phones, 3 from 640px, 4 from 860px (.grid-4) */
+.grid { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 860px) { .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* leave room for the fixed bottom nav on phones */
+body.has-bottom-nav { padding-bottom: 72px; }
+@media (min-width: 640px) { body.has-bottom-nav { padding-bottom: 0; } }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

@@ -41,3 +41,12 @@ Run it from the `ai/` folder. The service scales to zero when idle, so the first
 Labels are defined in `app/labels.py`.
 
 `GET /health` returns `{"status": "UP"}`.
+
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+Tests use a fake classifier, so the model is not loaded.

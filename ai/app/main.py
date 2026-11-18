@@ -2,9 +2,8 @@ from contextlib import asynccontextmanager
 from io import BytesIO
 
 from fastapi import FastAPI, File, HTTPException, Request, UploadFile
-from PIL import Image, UnidentifiedImageError
+from PIL import Image
 
-from app.classifier import Classifier
 from app.schemas import PredictResponse
 
 MAX_IMAGE_BYTES = 10 * 1024 * 1024
@@ -12,6 +11,8 @@ MAX_IMAGE_BYTES = 10 * 1024 * 1024
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    from app.classifier import Classifier
+
     app.state.classifier = Classifier()
     yield
 
@@ -36,9 +37,11 @@ async def predict(request: Request, file: UploadFile = File(...)) -> PredictResp
     try:
         image = Image.open(BytesIO(data))
         image.load()
-    except UnidentifiedImageError:
+    except OSError:
+        # UnidentifiedImageError is a subclass of OSError; load() raises OSError
+        # for truncated or corrupted image data.
         raise HTTPException(status_code=400, detail="Could not read the image.")
 
-    classifier: Classifier = request.app.state.classifier
+    classifier = request.app.state.classifier
     label, score = classifier.predict(image)
     return PredictResponse(model=classifier.name, label=label, score=score)

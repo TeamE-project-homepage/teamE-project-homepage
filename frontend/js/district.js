@@ -29,7 +29,13 @@ const DISTRICTS = [
 function chooseDistrict(code) {
   const district = DISTRICTS.find((d) => d.code === code);
   if (!district) return;
-  saveDistrict(district);
+
+  if (!saveDistrict(district)) {
+    document.getElementById("district-status").textContent =
+      "Could not save your district. Please check your browser settings and try again.";
+    return;
+  }
+
   window.location.href = "index.html";
 }
 

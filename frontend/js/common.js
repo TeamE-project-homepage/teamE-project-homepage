@@ -12,7 +12,9 @@ function loadDistrict() {
 function saveDistrict(district) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(district));
+    return true;
   } catch (e) {
+    return false;
   }
 }
 

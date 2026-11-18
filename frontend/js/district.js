@@ -1,5 +1,3 @@
-const STORAGE_KEY = "bingo.district";
-
 const DISTRICTS = [
   { code: "jongno", name: "Jongno-gu" },
   { code: "jung", name: "Jung-gu" },
@@ -27,22 +25,6 @@ const DISTRICTS = [
   { code: "songpa", name: "Songpa-gu" },
   { code: "gangdong", name: "Gangdong-gu" },
 ];
-
-function loadDistrict() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : null;
-  } catch (e) {
-    return null;
-  }
-}
-
-function saveDistrict(district) {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(district));
-  } catch (e) {
-  }
-}
 
 function chooseDistrict(code) {
   const district = DISTRICTS.find((d) => d.code === code);

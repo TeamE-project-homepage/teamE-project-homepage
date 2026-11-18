@@ -1,0 +1,72 @@
+﻿item_key,sort_order,label
+pet_bottle_clear,1,Empty & rinsed
+pet_bottle_clear,2,Label removed
+pet_bottle_clear,3,Crushed flat
+pet_bottle_colored,1,Empty & rinsed
+pet_bottle_colored,2,Label removed
+plastic_food_container,1,Empty & rinsed
+plastic_food_container,2,No food stains
+plastic_food_container,3,Label removed
+shampoo_bottle,1,Empty & rinsed
+shampoo_bottle,2,Pump removed
+shampoo_bottle,3,Label removed
+styrofoam_box,1,Tape & labels removed
+styrofoam_box,2,No food stains
+styrofoam_box,3,Plain white foam
+yogurt_cup,1,Foil lid removed
+yogurt_cup,2,Empty & rinsed
+bottle_cap,1,Cap is plastic
+bottle_cap,2,Clean & dry
+cup_noodle_container,1,Soup emptied
+cup_noodle_container,2,No red stains
+cup_noodle_container,3,Lid removed
+plastic_bag,1,Empty
+plastic_bag,2,No food left
+snack_bag,1,Crumbs emptied
+snack_bag,2,No food left
+bubble_wrap,1,Tape removed
+zipper_bag,1,Empty & rinsed
+zipper_bag,2,Dry
+disposable_plastic_gloves,1,No food left
+poly_mailer,1,Shipping label removed
+poly_mailer,2,Tape removed
+cardboard_box,1,Tape removed
+cardboard_box,2,Shipping label removed
+cardboard_box,3,Flattened
+pizza_box,1,Food removed
+pizza_box,2,Greasy parts torn off
+pizza_box,3,Flattened
+paper_cup,1,Empty & rinsed
+paper_cup,2,Lid & sleeve removed
+paper_cup,3,No food residue
+milk_carton,1,Rinsed & dried
+milk_carton,2,Straw & film removed
+milk_carton,3,Flattened
+newspaper,1,Kept dry
+newspaper,2,Coated flyers removed
+newspaper,3,Tied in a bundle
+spiral_notebook,1,Spring removed
+spiral_notebook,2,Plastic cover removed
+paper_bag,1,Handles removed
+paper_bag,2,Flattened
+glass_bottle,1,Cap removed
+glass_bottle,2,Empty & rinsed
+glass_bottle,3,No cigarette butts inside
+glass_jar,1,Lid removed
+glass_jar,2,Food residue rinsed
+glass_jar,3,Label-free if possible
+soju_beer_bottle,1,Empty & rinsed
+soju_beer_bottle,2,Cap removed
+soju_beer_bottle,3,Not broken
+aluminum_can,1,Empty & rinsed
+aluminum_can,2,No cigarette butts inside
+aluminum_can,3,Crushed
+tin_can,1,Food residue rinsed
+tin_can,2,Plastic lid removed
+butane_gas_canister,1,Gas fully released
+butane_gas_canister,2,Plastic cap removed
+aerosol_can,1,Fully emptied
+aerosol_can,2,Plastic cap removed
+metal_bottle_cap,1,Separated from bottle
+frying_pan,1,Plastic/wood handle removed
+frying_pan,2,Food residue removed

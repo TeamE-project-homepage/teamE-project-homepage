@@ -46,18 +46,18 @@
 11140,RECYCLABLE,3,Myeong-dong / 명동
 11200,FOOD,1,Eungbong-dong / 응봉동
 11200,FOOD,1,Geumho 1-ga-dong / 금호1가동
-11200,FOOD,1,Geumho 2-ga-dong (former) / (구)금호2가동
+11200,FOOD,1,Geumho 2-ga-dong / 금호2가동
 11200,FOOD,1,Geumho 4-ga-dong / 금호4가동
 11200,FOOD,1,Haengdang 1-dong / 행당1동
 11200,FOOD,1,Haengdang 2-dong / 행당2동
-11200,FOOD,1,"Oksu-dong (excl. Oksu Riverzen, Oksu Park Hills) / 옥수동"
+11200,FOOD,1,Oksu-dong / 옥수동
 11200,FOOD,1,Sageun-dong / 사근동
 11200,FOOD,1,Seongsu 1-ga 1-dong / 성수1가1동
 11200,FOOD,1,Seongsu 1-ga 2-dong / 성수1가2동
 11200,FOOD,1,Seongsu 2-ga 3-dong / 성수2가3동
-11200,FOOD,2,Geumho 3-ga-dong (former) / (구)금호3가동
+11200,FOOD,2,Geumho 3-ga-dong / 금호3가동
 11200,FOOD,2,Majang-dong / 마장동
-11200,FOOD,2,"Oksu-dong (Oksu Riverzen, Oksu Park Hills only) / 옥수동"
+11200,FOOD,2,Oksu-dong / 옥수동
 11200,FOOD,2,Seongsu 2-ga 1-dong / 성수2가1동
 11200,FOOD,2,Songjeong-dong / 송정동
 11200,FOOD,2,Wangsimni 2-dong / 왕십리2동
@@ -65,18 +65,18 @@
 11200,FOOD,2,Yongdap-dong / 용답동
 11200,GENERAL,1,Eungbong-dong / 응봉동
 11200,GENERAL,1,Geumho 1-ga-dong / 금호1가동
-11200,GENERAL,1,Geumho 2-ga-dong (former) / (구)금호2가동
+11200,GENERAL,1,Geumho 2-ga-dong / 금호2가동
 11200,GENERAL,1,Geumho 4-ga-dong / 금호4가동
 11200,GENERAL,1,Haengdang 1-dong / 행당1동
 11200,GENERAL,1,Haengdang 2-dong / 행당2동
-11200,GENERAL,1,"Oksu-dong (excl. Oksu Riverzen, Oksu Park Hills) / 옥수동"
+11200,GENERAL,1,Oksu-dong / 옥수동
 11200,GENERAL,1,Sageun-dong / 사근동
 11200,GENERAL,1,Seongsu 1-ga 1-dong / 성수1가1동
 11200,GENERAL,1,Seongsu 1-ga 2-dong / 성수1가2동
 11200,GENERAL,1,Seongsu 2-ga 3-dong / 성수2가3동
-11200,GENERAL,2,Geumho 3-ga-dong (former) / (구)금호3가동
+11200,GENERAL,2,Geumho 3-ga-dong / 금호3가동
 11200,GENERAL,2,Majang-dong / 마장동
-11200,GENERAL,2,"Oksu-dong (Oksu Riverzen, Oksu Park Hills only) / 옥수동"
+11200,GENERAL,2,Oksu-dong / 옥수동
 11200,GENERAL,2,Seongsu 2-ga 1-dong / 성수2가1동
 11200,GENERAL,2,Songjeong-dong / 송정동
 11200,GENERAL,2,Wangsimni 2-dong / 왕십리2동
@@ -89,7 +89,7 @@
 11230,FOOD,1,Jangan 2-dong / 장안2동
 11230,FOOD,1,Jeonnong 2-dong / 전농2동
 11230,FOOD,1,Yongdu-dong / 용두동
-11230,FOOD,1,Yongsin-dong (formerly Sinseol-dong) / 신설동(현 용신동)
+11230,FOOD,1,Sinseol-dong / 신설동
 11230,FOOD,2,Cheongnyangni-dong / 청량리동
 11230,FOOD,2,Dapsimni 2-dong / 답십리2동
 11230,FOOD,2,Imun 1-dong / 이문1동
@@ -104,7 +104,7 @@
 11230,GENERAL,1,Jangan 2-dong / 장안2동
 11230,GENERAL,1,Jeonnong 2-dong / 전농2동
 11230,GENERAL,1,Yongdu-dong / 용두동
-11230,GENERAL,1,Yongsin-dong (formerly Sinseol-dong) / 신설동(현 용신동)
+11230,GENERAL,1,Sinseol-dong / 신설동
 11230,GENERAL,2,Cheongnyangni-dong / 청량리동
 11230,GENERAL,2,Dapsimni 2-dong / 답십리2동
 11230,GENERAL,2,Imun 1-dong / 이문1동
@@ -189,7 +189,7 @@
 11290,FOOD,1,Wolgok 1-dong / 월곡1동
 11290,FOOD,1,Wolgok 2-dong / 월곡2동
 11290,FOOD,2,Anam-dong / 안암동
-11290,FOOD,2,"Dongseon-dong (excl. 4-ga, 5-ga) / 동선동"
+11290,FOOD,2,Dongseon-dong / 동선동
 11290,FOOD,2,Gireum 1-dong / 길음1동
 11290,FOOD,2,Jangwi 2-dong / 장위2동
 11290,FOOD,2,Jangwi 3-dong / 장위3동
@@ -197,7 +197,7 @@
 11290,FOOD,2,Jeongneung 3-dong / 정릉3동
 11290,FOOD,2,Samseon-dong / 삼선동
 11290,FOOD,2,Seokgwan-dong / 석관동
-11290,FOOD,2,Seongbuk-dong (1-ga only) / 성북동1가
+11290,FOOD,2,Seongbuk-dong / 성북동
 11290,GENERAL,1,Bomun-dong / 보문동
 11290,GENERAL,1,Donam 1-dong / 돈암1동
 11290,GENERAL,1,Donam 2-dong / 돈암2동
@@ -212,7 +212,7 @@
 11290,GENERAL,1,Wolgok 1-dong / 월곡1동
 11290,GENERAL,1,Wolgok 2-dong / 월곡2동
 11290,GENERAL,2,Anam-dong / 안암동
-11290,GENERAL,2,"Dongseon-dong (excl. 4-ga, 5-ga) / 동선동"
+11290,GENERAL,2,Dongseon-dong / 동선동
 11290,GENERAL,2,Gireum 1-dong / 길음1동
 11290,GENERAL,2,Jangwi 2-dong / 장위2동
 11290,GENERAL,2,Jangwi 3-dong / 장위3동
@@ -220,7 +220,7 @@
 11290,GENERAL,2,Jeongneung 3-dong / 정릉3동
 11290,GENERAL,2,Samseon-dong / 삼선동
 11290,GENERAL,2,Seokgwan-dong / 석관동
-11290,GENERAL,2,Seongbuk-dong (1-ga only) / 성북동1가
+11290,GENERAL,2,Seongbuk-dong / 성북동
 11290,RECYCLABLE,1,Bomun-dong / 보문동
 11290,RECYCLABLE,1,Gireum 1-dong / 길음1동
 11290,RECYCLABLE,1,Gireum 2-dong / 길음2동
@@ -233,7 +233,7 @@
 11290,RECYCLABLE,2,Jeongneung 4-dong / 정릉4동
 11290,RECYCLABLE,2,Samseon-dong / 삼선동
 11290,RECYCLABLE,2,Seokgwan-dong / 석관동
-11290,RECYCLABLE,2,Seongbuk-dong (1-ga only) / 성북동1가
+11290,RECYCLABLE,2,Seongbuk-dong / 성북동
 11290,RECYCLABLE,2,Wolgok 1-dong / 월곡1동
 11290,RECYCLABLE,3,Donam 1-dong / 돈암1동
 11290,RECYCLABLE,3,Donam 2-dong / 돈암2동
@@ -308,51 +308,51 @@
 11380,SPECIAL,2,Susaek-dong / 수색동
 11410,FOOD,1,Bukgajwa 1-dong / 북가좌1동
 11410,FOOD,1,Cheonyeon-dong / 천연동
-11410,FOOD,1,Chunghyeon-dong (former Bukahyeon 3-dong area) / 충현동
+11410,FOOD,1,Chunghyeon-dong / 충현동
 11410,FOOD,1,Hongeun 2-dong / 홍은2동
 11410,FOOD,1,Hongje 1-dong / 홍제1동
 11410,FOOD,1,Hongje 2-dong / 홍제2동
 11410,FOOD,1,Hongje 3-dong / 홍제3동
 11410,FOOD,1,Namgajwa 1-dong / 남가좌1동
 11410,FOOD,1,Namgajwa 2-dong / 남가좌2동
-11410,FOOD,1,"Sinchon-dong (former Daehyeon, Daesin, Bongwon area) / 신촌동"
+11410,FOOD,1,Sinchon-dong / 신촌동
 11410,FOOD,2,Bukahyeon-dong / 북아현동
 11410,FOOD,2,Bukgajwa 2-dong / 북가좌2동
-11410,FOOD,2,"Chunghyeon-dong (former Chungjeongno, Hap-dong, Migeun area) / 충현동"
+11410,FOOD,2,Chunghyeon-dong / 충현동
 11410,FOOD,2,Hongeun 1-dong / 홍은1동
-11410,FOOD,2,Sinchon-dong (former Changcheon area) / 신촌동
+11410,FOOD,2,Sinchon-dong / 신촌동
 11410,FOOD,2,Yeonhui-dong / 연희동
 11410,GENERAL,1,Bukgajwa 1-dong / 북가좌1동
 11410,GENERAL,1,Cheonyeon-dong / 천연동
-11410,GENERAL,1,Chunghyeon-dong (former Bukahyeon 3-dong area) / 충현동
+11410,GENERAL,1,Chunghyeon-dong / 충현동
 11410,GENERAL,1,Hongeun 2-dong / 홍은2동
 11410,GENERAL,1,Hongje 1-dong / 홍제1동
 11410,GENERAL,1,Hongje 2-dong / 홍제2동
 11410,GENERAL,1,Hongje 3-dong / 홍제3동
 11410,GENERAL,1,Namgajwa 1-dong / 남가좌1동
 11410,GENERAL,1,Namgajwa 2-dong / 남가좌2동
-11410,GENERAL,1,"Sinchon-dong (former Daehyeon, Daesin, Bongwon area) / 신촌동"
+11410,GENERAL,1,Sinchon-dong / 신촌동
 11410,GENERAL,2,Bukahyeon-dong / 북아현동
 11410,GENERAL,2,Bukgajwa 2-dong / 북가좌2동
-11410,GENERAL,2,"Chunghyeon-dong (former Chungjeongno, Hap-dong, Migeun area) / 충현동"
+11410,GENERAL,2,Chunghyeon-dong / 충현동
 11410,GENERAL,2,Hongeun 1-dong / 홍은1동
-11410,GENERAL,2,Sinchon-dong (former Changcheon area) / 신촌동
+11410,GENERAL,2,Sinchon-dong / 신촌동
 11410,GENERAL,2,Yeonhui-dong / 연희동
 11410,RECYCLABLE,1,Bukgajwa 1-dong / 북가좌1동
 11410,RECYCLABLE,1,Cheonyeon-dong / 천연동
-11410,RECYCLABLE,1,Chunghyeon-dong (former Bukahyeon 3-dong area) / 충현동
+11410,RECYCLABLE,1,Chunghyeon-dong / 충현동
 11410,RECYCLABLE,1,Hongeun 2-dong / 홍은2동
 11410,RECYCLABLE,1,Hongje 1-dong / 홍제1동
 11410,RECYCLABLE,1,Hongje 2-dong / 홍제2동
 11410,RECYCLABLE,1,Hongje 3-dong / 홍제3동
 11410,RECYCLABLE,1,Namgajwa 1-dong / 남가좌1동
 11410,RECYCLABLE,1,Namgajwa 2-dong / 남가좌2동
-11410,RECYCLABLE,1,"Sinchon-dong (former Daehyeon, Daesin, Bongwon area) / 신촌동"
+11410,RECYCLABLE,1,Sinchon-dong / 신촌동
 11410,RECYCLABLE,2,Bukahyeon-dong / 북아현동
 11410,RECYCLABLE,2,Bukgajwa 2-dong / 북가좌2동
-11410,RECYCLABLE,2,"Chunghyeon-dong (former Chungjeongno, Hap-dong, Migeun area) / 충현동"
+11410,RECYCLABLE,2,Chunghyeon-dong / 충현동
 11410,RECYCLABLE,2,Hongeun 1-dong / 홍은1동
-11410,RECYCLABLE,2,Sinchon-dong (former Changcheon area) / 신촌동
+11410,RECYCLABLE,2,Sinchon-dong / 신촌동
 11410,RECYCLABLE,2,Yeonhui-dong / 연희동
 11650,GENERAL,1,Bangbae 1-dong / 방배1동
 11650,GENERAL,1,Bangbae 2-dong / 방배2동
@@ -362,20 +362,19 @@
 11650,GENERAL,1,Banpo-bondong / 반포본동
 11650,GENERAL,1,Naegok-dong / 내곡동
 11650,GENERAL,1,Seocho 2-dong / 서초2동
-11650,GENERAL,1,"Seocho 3-dong (east of Banpo-daero, toward Nambu Terminal) / 서초3동"
+11650,GENERAL,1,Seocho 3-dong / 서초3동
 11650,GENERAL,1,Seocho 4-dong / 서초4동
 11650,GENERAL,1,Sinwon-dong / 신원동
-11650,GENERAL,1,Yangjae 1-dong (Umyeon-dong area) / 양재1동
+11650,GENERAL,1,Yangjae 1-dong / 양재1동
 11650,GENERAL,1,Yeomgok-dong / 염곡동
 11650,GENERAL,2,Bangbae 3-dong / 방배3동
 11650,GENERAL,2,Bangbae 4-dong / 방배4동
 11650,GENERAL,2,Banpo 1-dong / 반포1동
-11650,GENERAL,2,"Banpo 4-dong (east of Banpo-daero, Mido Apt) / 반포4동"
-11650,GENERAL,2,"Banpo 4-dong (west of Banpo-daero, Seorae Village) / 반포4동"
+11650,GENERAL,2,Banpo 4-dong / 반포4동
 11650,GENERAL,2,Jamwon-dong / 잠원동
 11650,GENERAL,2,Seocho 1-dong / 서초1동
-11650,GENERAL,2,"Seocho 3-dong (west of Banpo-daero, toward Seoul High School) / 서초3동"
-11650,GENERAL,2,Yangjae 2-dong (Wonji-dong area) / 양재2동
+11650,GENERAL,2,Seocho 3-dong / 서초3동
+11650,GENERAL,2,Yangjae 2-dong / 양재2동
 11650,RECYCLABLE,1,Bangbae 1-dong / 방배1동
 11650,RECYCLABLE,1,Bangbae 2-dong / 방배2동
 11650,RECYCLABLE,1,Bangbae-bondong / 방배본동
@@ -384,20 +383,19 @@
 11650,RECYCLABLE,1,Banpo-bondong / 반포본동
 11650,RECYCLABLE,1,Naegok-dong / 내곡동
 11650,RECYCLABLE,1,Seocho 2-dong / 서초2동
-11650,RECYCLABLE,1,"Seocho 3-dong (east of Banpo-daero, toward Nambu Terminal) / 서초3동"
+11650,RECYCLABLE,1,Seocho 3-dong / 서초3동
 11650,RECYCLABLE,1,Seocho 4-dong / 서초4동
 11650,RECYCLABLE,1,Sinwon-dong / 신원동
-11650,RECYCLABLE,1,Yangjae 1-dong (Umyeon-dong area) / 양재1동
+11650,RECYCLABLE,1,Yangjae 1-dong / 양재1동
 11650,RECYCLABLE,1,Yeomgok-dong / 염곡동
 11650,RECYCLABLE,2,Bangbae 3-dong / 방배3동
 11650,RECYCLABLE,2,Bangbae 4-dong / 방배4동
 11650,RECYCLABLE,2,Banpo 1-dong / 반포1동
-11650,RECYCLABLE,2,"Banpo 4-dong (east of Banpo-daero, Mido Apt) / 반포4동"
-11650,RECYCLABLE,2,"Banpo 4-dong (west of Banpo-daero, Seorae Village) / 반포4동"
+11650,RECYCLABLE,2,Banpo 4-dong / 반포4동
 11650,RECYCLABLE,2,Jamwon-dong / 잠원동
 11650,RECYCLABLE,2,Seocho 1-dong / 서초1동
-11650,RECYCLABLE,2,"Seocho 3-dong (west of Banpo-daero, toward Seoul High School) / 서초3동"
-11650,RECYCLABLE,2,Yangjae 2-dong (Wonji-dong area) / 양재2동
+11650,RECYCLABLE,2,Seocho 3-dong / 서초3동
+11650,RECYCLABLE,2,Yangjae 2-dong / 양재2동
 11710,FOOD,1,Garak 2-dong / 가락2동
 11710,FOOD,1,Mancheon 2-dong / 마천2동
 11710,FOOD,1,Ogeum-dong / 오금동
@@ -413,7 +411,7 @@
 11710,FOOD,2,Geoyeo 1-dong / 거여1동
 11710,FOOD,2,Geoyeo 2-dong / 거여2동
 11710,FOOD,2,Jamsil-bondong / 잠실본동
-11710,FOOD,2,Jangji-dong (part) / 장지동
+11710,FOOD,2,Jangji-dong / 장지동
 11710,FOOD,2,Mancheon 1-dong / 마천1동
 11710,FOOD,2,Munjeong 1-dong / 문정1동
 11710,FOOD,2,Oryun-dong / 오륜동
@@ -433,7 +431,7 @@
 11710,GENERAL,2,Geoyeo 1-dong / 거여1동
 11710,GENERAL,2,Geoyeo 2-dong / 거여2동
 11710,GENERAL,2,Jamsil-bondong / 잠실본동
-11710,GENERAL,2,Jangji-dong (part) / 장지동
+11710,GENERAL,2,Jangji-dong / 장지동
 11710,GENERAL,2,Mancheon 1-dong / 마천1동
 11710,GENERAL,2,Munjeong 1-dong / 문정1동
 11710,GENERAL,2,Oryun-dong / 오륜동
@@ -453,7 +451,7 @@
 11710,RECYCLABLE,2,Geoyeo 1-dong / 거여1동
 11710,RECYCLABLE,2,Geoyeo 2-dong / 거여2동
 11710,RECYCLABLE,2,Jamsil-bondong / 잠실본동
-11710,RECYCLABLE,2,Jangji-dong (part) / 장지동
+11710,RECYCLABLE,2,Jangji-dong / 장지동
 11710,RECYCLABLE,2,Mancheon 1-dong / 마천1동
 11710,RECYCLABLE,2,Munjeong 1-dong / 문정1동
 11710,RECYCLABLE,2,Oryun-dong / 오륜동

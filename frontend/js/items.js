@@ -58,6 +58,15 @@ function renderItemsPage() {
   const categoryInfo = MOCK_CATEGORIES.find((c) => c.id === category);
   const keyword = normalize(q);
   if (categoryInfo) {
+    const form = document.querySelector(".search-form");
+    const hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = "category";
+    hidden.value = categoryInfo.id;
+    form.appendChild(hidden);
+  }
+  
+  if (categoryInfo) {
     title.textContent = categoryInfo.name;
   } else if (keyword) {
     title.textContent = 'Results for "' + q.trim() + '"';

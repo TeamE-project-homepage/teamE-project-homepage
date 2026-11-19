@@ -2,4 +2,5 @@
 RECYCLABLE,Recyclable Waste
 GENERAL,General Waste
 FOOD,Food Waste
-SPECIAL,Special Disposal
+BULKY,Bulky Waste
+NON_COMBUSTIBLE,Non-combustible Waste (Special Sack)

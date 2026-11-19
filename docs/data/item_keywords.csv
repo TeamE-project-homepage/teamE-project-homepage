@@ -1,0 +1,224 @@
+﻿item_key,keyword
+pet_bottle_clear,plastic bottle
+pet_bottle_clear,water bottle
+pet_bottle_clear,pet bottle
+pet_bottle_clear,soda bottle
+pet_bottle_clear,drink bottle
+pet_bottle_colored,green bottle
+pet_bottle_colored,brown bottle
+pet_bottle_colored,colored plastic bottle
+pet_bottle_colored,coloured plastic bottle
+pet_bottle_colored,beer pet bottle
+plastic_food_container,takeout container
+plastic_food_container,takeaway container
+plastic_food_container,food container
+plastic_food_container,delivery container
+plastic_food_container,plastic tub
+shampoo_bottle,shampoo bottle
+shampoo_bottle,pump bottle
+shampoo_bottle,body wash bottle
+shampoo_bottle,detergent bottle
+shampoo_bottle,conditioner bottle
+styrofoam_box,styrofoam
+styrofoam_box,polystyrene box
+styrofoam_box,foam box
+styrofoam_box,eps foam
+styrofoam_box,packing foam
+toothbrush,toothbrush
+toothbrush,tooth brush
+toothbrush,plastic toothbrush
+toothbrush,electric toothbrush head
+yogurt_cup,yogurt cup
+yogurt_cup,yoghurt cup
+yogurt_cup,yogurt container
+yogurt_cup,pudding cup
+yogurt_cup,dessert cup
+bottle_cap,bottle cap
+bottle_cap,bottle lid
+bottle_cap,plastic cap
+bottle_cap,screw cap
+cup_noodle_container,cup noodle
+cup_noodle_container,instant noodle cup
+cup_noodle_container,ramen cup
+cup_noodle_container,noodle cup
+cup_noodle_container,pot noodle
+plastic_straw,straw
+plastic_straw,drinking straw
+plastic_straw,plastic straw
+plastic_straw,boba straw
+plastic_straw,bubble tea straw
+ballpoint_pen,pen
+ballpoint_pen,ballpoint pen
+ballpoint_pen,biro
+ballpoint_pen,mechanical pencil
+ballpoint_pen,marker
+plastic_toy,toy
+plastic_toy,plastic toy
+plastic_toy,kids toy
+plastic_toy,figure
+plastic_toy,action figure
+plastic_bag,plastic bag
+plastic_bag,carrier bag
+plastic_bag,shopping bag
+plastic_bag,grocery bag
+plastic_bag,vinyl bag
+snack_bag,chip bag
+snack_bag,crisp packet
+snack_bag,snack bag
+snack_bag,ramen wrapper
+snack_bag,noodle packet
+snack_bag,candy wrapper
+bubble_wrap,bubble wrap
+bubble_wrap,air cap
+bubble_wrap,air bubble packaging
+bubble_wrap,packing bubbles
+zipper_bag,zipper bag
+zipper_bag,ziploc bag
+zipper_bag,ziplock bag
+zipper_bag,resealable bag
+zipper_bag,freezer bag
+cling_wrap,cling wrap
+cling_wrap,cling film
+cling_wrap,plastic wrap
+cling_wrap,saran wrap
+cling_wrap,food wrap
+rubber_gloves,rubber gloves
+rubber_gloves,kitchen gloves
+rubber_gloves,dishwashing gloves
+rubber_gloves,washing-up gloves
+rubber_gloves,pvc gloves
+disposable_plastic_gloves,plastic gloves
+disposable_plastic_gloves,disposable gloves
+disposable_plastic_gloves,food prep gloves
+disposable_plastic_gloves,poly gloves
+poly_mailer,poly mailer
+poly_mailer,courier bag
+poly_mailer,delivery bag
+poly_mailer,shipping bag
+poly_mailer,parcel bag
+cardboard_box,cardboard
+cardboard_box,carton box
+cardboard_box,delivery box
+cardboard_box,shipping box
+cardboard_box,corrugated box
+pizza_box,pizza box
+pizza_box,pizza carton
+pizza_box,takeout box
+pizza_box,food box
+paper_cup,paper cup
+paper_cup,coffee cup
+paper_cup,disposable cup
+paper_cup,takeaway cup
+paper_cup,to-go cup
+milk_carton,milk carton
+milk_carton,juice carton
+milk_carton,tetra pak
+milk_carton,drink carton
+milk_carton,soy milk carton
+receipt,receipt
+receipt,till receipt
+receipt,thermal paper
+receipt,shopping receipt
+receipt,bill
+newspaper,newspaper
+newspaper,news paper
+newspaper,magazine
+newspaper,flyer
+newspaper,paper pile
+spiral_notebook,spiral notebook
+spiral_notebook,notebook
+spiral_notebook,exercise book
+spiral_notebook,note book
+spiral_notebook,textbook
+tissue_paper,tissue
+tissue_paper,paper towel
+tissue_paper,napkin
+tissue_paper,kitchen roll
+tissue_paper,toilet paper
+tissue_paper,serviette
+coated_paper,coated paper
+coated_paper,glossy flyer
+coated_paper,laminated paper
+coated_paper,photo print
+coated_paper,leaflet
+coated_paper,glossy paper
+paper_bag,paper bag
+paper_bag,shopping bag
+paper_bag,carrier bag
+paper_bag,gift bag
+paper_bag,paper carrier
+glass_bottle,glass bottle
+glass_bottle,wine bottle
+glass_bottle,drink bottle
+glass_bottle,juice bottle
+glass_bottle,liquor bottle
+glass_jar,glass jar
+glass_jar,jam jar
+glass_jar,sauce jar
+glass_jar,pickle jar
+glass_jar,food jar
+broken_glass,broken glass
+broken_glass,glass shards
+broken_glass,shattered glass
+broken_glass,broken cup
+broken_glass,glass pieces
+soju_beer_bottle,soju bottle
+soju_beer_bottle,beer bottle
+soju_beer_bottle,deposit bottle
+soju_beer_bottle,returnable bottle
+soju_beer_bottle,green bottle
+mirror,mirror
+mirror,hand mirror
+mirror,makeup mirror
+mirror,wall mirror
+mirror,looking glass
+ceramic_mug,ceramic mug
+ceramic_mug,porcelain
+ceramic_mug,pottery
+ceramic_mug,ceramic plate
+ceramic_mug,china bowl
+ceramic_mug,coffee mug
+heat_resistant_glass,pyrex
+heat_resistant_glass,heat-resistant glass
+heat_resistant_glass,glass baking dish
+heat_resistant_glass,glass pot lid
+heat_resistant_glass,oven dish
+heat_resistant_glass,borosilicate glass
+aluminum_can,aluminum can
+aluminum_can,aluminium can
+aluminum_can,soda can
+aluminum_can,beer can
+aluminum_can,drink can
+aluminum_can,coke can
+tin_can,tin can
+tin_can,food can
+tin_can,tuna can
+tin_can,canned food
+tin_can,steel can
+tin_can,spam can
+butane_gas_canister,butane gas
+butane_gas_canister,gas canister
+butane_gas_canister,camping gas
+butane_gas_canister,portable stove gas
+butane_gas_canister,butane can
+aerosol_can,aerosol can
+aerosol_can,spray can
+aerosol_can,insect spray
+aerosol_can,hairspray can
+aerosol_can,deodorant spray
+aluminum_foil,aluminum foil
+aluminum_foil,aluminium foil
+aluminum_foil,tin foil
+aluminum_foil,kitchen foil
+aluminum_foil,foil wrap
+metal_bottle_cap,bottle cap
+metal_bottle_cap,crown cap
+metal_bottle_cap,beer cap
+metal_bottle_cap,metal lid
+metal_bottle_cap,jar lid
+frying_pan,frying pan
+frying_pan,fry pan
+frying_pan,skillet
+frying_pan,cooking pot
+frying_pan,saucepan
+frying_pan,wok

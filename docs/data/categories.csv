@@ -1,0 +1,11 @@
+﻿code,name,sort_order
+PL,Plastic,1
+VN,Vinyl,2
+PA,Paper,3
+GL,Glass,4
+ME,Metal,5
+AP,Appliances,6
+FU,Furniture,7
+CL,Clothing,8
+FO,Food Waste,9
+BK,Bulky Waste,10

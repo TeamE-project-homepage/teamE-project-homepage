@@ -42,6 +42,16 @@ Labels are defined in `app/labels.py`.
 
 `GET /health` returns `{"status": "UP"}`.
 
+## Accuracy evaluation
+
+Put labeled photos in sub-folders named after the expected label (`photos/plastic/*.jpg`, `photos/can/*.jpg`, ...), then run from `ai/`:
+
+```bash
+python scripts/evaluate.py --photos ./photos
+```
+
+It prints overall and per-label top-1 accuracy, plus coverage and accuracy for confidence thresholds from 0.2 to 0.8. The model weights are downloaded on the first run.
+
 ## Tests
 
 ```bash

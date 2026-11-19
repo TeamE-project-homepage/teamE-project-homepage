@@ -6,6 +6,8 @@
   <title>Item list | BinGo</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+    <script defer src="js/mock-data.js"></script>
+  <script defer src="js/items.js"></script>
 </head>
 <body class="has-bottom-nav">
   <header class="site-header container">
@@ -17,14 +19,16 @@
 
     <p><a href="index.html">&larr; Back</a></p>
     <div class="district-bar"><span>District: (selected district)</span><a href="district.html">Change</a></div>
-    <h1>Category name</h1>
+    <h1 id="items-title">Category name</h1>
     <form class="search-form" action="items.html" role="search"><input type="search" name="q" placeholder="Search items" aria-label="Search items"><button class="btn" type="submit">Go</button></form>
-    <p class="section">N items</p>
-    <div class="grid grid-4"><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a></div>
+    <p class="section" id="items-count"></p>
+    <div class="grid grid-4" id="item-grid"></div>
 
-    <section class="section">
-      <h2>Empty state</h2>
-      <div class="state"><p>No results message and links to search again or browse categories.</p></div>
+    <section class="section" id="items-empty" hidden>
+      <div class="state" role="status">
+        <p id="items-empty-text"></p>
+        <p><a href="index.html">Browse categories</a></p>
+      </div>
     </section>
 
   </main>

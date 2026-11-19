@@ -3,7 +3,7 @@ services:
     name: bingo-backend
     runtime: docker
     plan: free
-    branch: main
+    branch: develop
     rootDir: backend
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health

@@ -222,3 +222,227 @@ frying_pan,skillet
 frying_pan,cooking pot
 frying_pan,saucepan
 frying_pan,wok
+refrigerator,refrigerator
+refrigerator,fridge
+refrigerator,freezer
+refrigerator,mini fridge
+refrigerator,냉장고
+washing_machine,washing machine
+washing_machine,washer
+washing_machine,laundry machine
+washing_machine,drum washer
+washing_machine,세탁기
+air_conditioner,air conditioner
+air_conditioner,ac unit
+air_conditioner,aircon
+air_conditioner,outdoor ac unit
+air_conditioner,에어컨
+television,television
+television,tv
+television,flat screen tv
+television,lcd tv
+television,텔레비전
+microwave,microwave oven
+microwave,microwave
+microwave,countertop microwave
+microwave,전자레인지
+rice_cooker,electric rice cooker
+rice_cooker,rice cooker
+rice_cooker,electric cooker
+rice_cooker,pressure rice cooker
+rice_cooker,전기밥솥
+electric_kettle,electric kettle
+electric_kettle,kettle
+electric_kettle,water boiler
+electric_kettle,전기주전자
+vacuum_cleaner,vacuum cleaner
+vacuum_cleaner,vacuum
+vacuum_cleaner,stick vacuum
+vacuum_cleaner,hoover
+vacuum_cleaner,청소기
+electric_fan,electric fan
+electric_fan,fan
+electric_fan,desk fan
+electric_fan,standing fan
+electric_fan,선풍기
+hair_dryer,hair dryer
+hair_dryer,hairdryer
+hair_dryer,blow dryer
+hair_dryer,hair drier
+hair_dryer,헤어드라이어
+desk,desk
+desk,study desk
+desk,computer desk
+desk,writing desk
+desk,책상
+dining_table,dining table
+dining_table,table
+dining_table,kitchen table
+dining_table,dinner table
+dining_table,식탁
+chair,chair
+chair,office chair
+chair,desk chair
+chair,dining chair
+chair,의자
+sofa,sofa
+sofa,couch
+sofa,settee
+sofa,loveseat
+sofa,소파
+wardrobe,wardrobe
+wardrobe,closet
+wardrobe,wardrobe cabinet
+wardrobe,armoire
+wardrobe,장롱·옷장
+bookshelf,bookshelf
+bookshelf,bookcase
+bookshelf,book shelf
+bookshelf,shelving unit
+bookshelf,책장
+bed_frame,bed frame
+bed_frame,bedstead
+bed_frame,bed base
+bed_frame,wooden bed frame
+bed_frame,침대 프레임
+mattress,mattress
+mattress,bed mattress
+mattress,spring mattress
+mattress,foam mattress
+mattress,매트리스
+reusable_clothes,reusable clothes
+reusable_clothes,used clothes
+reusable_clothes,old clothes
+reusable_clothes,shirt
+reusable_clothes,t shirt
+reusable_clothes,jacket
+reusable_clothes,trousers
+reusable_clothes,재사용 가능한 헌옷
+damaged_clothes,damaged clothes
+damaged_clothes,torn clothes
+damaged_clothes,dirty clothes
+damaged_clothes,stained clothes
+damaged_clothes,worn out clothing
+damaged_clothes,찢어지거나 오염된 헌옷
+shoes,reusable shoes
+shoes,shoes
+shoes,sneakers
+shoes,trainers
+shoes,running shoes
+shoes,재사용 가능한 신발
+handbag,reusable bag
+handbag,handbag
+handbag,backpack
+handbag,shoulder bag
+handbag,tote bag
+handbag,재사용 가능한 일반 가방
+curtains,fabric curtains
+curtains,curtain
+curtains,fabric curtain
+curtains,drapes
+curtains,천 커튼
+pillow,pillow
+pillow,bed pillow
+pillow,cushioned pillow
+pillow,sleeping pillow
+pillow,베개
+leftover_rice,leftover rice
+leftover_rice,cooked rice
+leftover_rice,leftover food
+leftover_rice,rice leftovers
+leftover_rice,남은 밥
+vegetable_scraps,soft vegetable scraps
+vegetable_scraps,vegetable scraps
+vegetable_scraps,cabbage leaves
+vegetable_scraps,vegetable peelings
+vegetable_scraps,부드러운 채소 자투리
+banana_peel,banana peel
+banana_peel,banana skin
+banana_peel,banana waste
+banana_peel,바나나 껍질
+citrus_peel,citrus peel
+citrus_peel,orange peel
+citrus_peel,tangerine peel
+citrus_peel,mandarin peel
+citrus_peel,귤·오렌지 껍질
+watermelon_rind,watermelon rind
+watermelon_rind,watermelon skin
+watermelon_rind,melon rind
+watermelon_rind,watermelon peel
+watermelon_rind,수박 껍질
+animal_bones,meat bones
+animal_bones,chicken bones
+animal_bones,pork bones
+animal_bones,beef bones
+animal_bones,소·돼지·닭 뼈
+fish_bones,fish bones
+fish_bones,fish skeleton
+fish_bones,fishbone
+fish_bones,생선뼈·가시
+shellfish_shells,shellfish and crab shells
+shellfish_shells,clam shells
+shellfish_shells,oyster shells
+shellfish_shells,crab shells
+shellfish_shells,shellfish shells
+shellfish_shells,조개·굴·게 껍데기
+eggshells,eggshells
+eggshells,egg shell
+eggshells,egg shells
+eggshells,eggshell
+eggshells,달걀 껍데기
+coffee_grounds,coffee grounds
+coffee_grounds,used coffee
+coffee_grounds,coffee residue
+coffee_grounds,커피 찌꺼기
+onion_skin,onion skin
+onion_skin,onion peel
+onion_skin,dry onion peel
+onion_skin,양파 껍질
+fruit_pits,hard fruit pits
+fruit_pits,peach pit
+fruit_pits,apricot stone
+fruit_pits,persimmon seed
+fruit_pits,fruit stone
+fruit_pits,복숭아·살구 등 딱딱한 씨
+tea_bag,used tea bag
+tea_bag,teabag
+tea_bag,tea sachet
+tea_bag,사용한 티백
+nut_shells,hard nut shells
+nut_shells,walnut shell
+nut_shells,chestnut shell
+nut_shells,nut shells
+nut_shells,호두·밤 껍데기
+cotton_quilt,padded quilt
+cotton_quilt,duvet
+cotton_quilt,comforter
+cotton_quilt,thick bedding
+cotton_quilt,솜이불
+suitcase,wheeled suitcase
+suitcase,suitcase
+suitcase,rolling luggage
+suitcase,trolley bag
+suitcase,바퀴달린 여행 가방
+bicycle,bicycle
+bicycle,bike
+bicycle,pedal bike
+bicycle,city bike
+bicycle,일반 자전거
+stroller,stroller
+stroller,pushchair
+stroller,baby stroller
+stroller,pram
+stroller,buggy
+stroller,유모차
+carpet,large carpet
+carpet,rug
+carpet,carpet
+carpet,large rug
+carpet,floor carpet
+carpet,대형 카펫
+large_stuffed_toy,large stuffed toy
+large_stuffed_toy,large plush toy
+large_stuffed_toy,stuffed animal
+large_stuffed_toy,large teddy bear
+large_stuffed_toy,plushie
+large_stuffed_toy,대형 봉제인형

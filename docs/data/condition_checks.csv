@@ -70,3 +70,73 @@ aerosol_can,2,Plastic cap removed
 metal_bottle_cap,1,Separated from bottle
 frying_pan,1,Plastic/wood handle removed
 frying_pan,2,Food residue removed
+refrigerator,1,Appliance intact
+refrigerator,2,Pickup confirmed
+washing_machine,1,Appliance intact
+washing_machine,2,Pickup confirmed
+air_conditioner,1,Fixed units uninstalled
+air_conditioner,2,Appliance intact
+air_conditioner,3,Pickup confirmed
+television,1,Appliance intact
+television,2,Pickup confirmed
+microwave,1,Contents removed
+microwave,2,E-waste collection route confirmed
+rice_cooker,1,Contents removed
+rice_cooker,2,E-waste collection route confirmed
+electric_kettle,1,Contents removed
+electric_kettle,2,E-waste collection route confirmed
+vacuum_cleaner,1,Contents removed
+vacuum_cleaner,2,E-waste collection route confirmed
+electric_fan,1,Contents removed
+electric_fan,2,E-waste collection route confirmed
+hair_dryer,1,Contents removed
+hair_dryer,2,E-waste collection route confirmed
+desk,1,Item size checked
+desk,2,District report completed
+dining_table,1,Item size checked
+dining_table,2,District report completed
+chair,1,Item size checked
+chair,2,District report completed
+sofa,1,Item size checked
+sofa,2,District report completed
+wardrobe,1,Item size checked
+wardrobe,2,District report completed
+bookshelf,1,Item size checked
+bookshelf,2,District report completed
+bed_frame,1,Item size checked
+bed_frame,2,District report completed
+mattress,1,Item size checked
+mattress,2,District report completed
+reusable_clothes,1,Reusable condition
+reusable_clothes,2,Clean and dry
+shoes,1,Reusable condition
+shoes,2,Clean and dry
+shoes,3,Accepted by the collection-box operator
+handbag,1,Reusable condition
+handbag,2,Clean and dry
+handbag,3,Accepted by the collection-box operator
+curtains,1,Reusable condition
+curtains,2,Clean and dry
+curtains,3,Accepted by the collection-box operator
+leftover_rice,1,Non-food material removed
+leftover_rice,2,Excess liquid drained
+vegetable_scraps,1,Non-food material removed
+vegetable_scraps,2,Excess liquid drained
+banana_peel,1,Non-food material removed
+banana_peel,2,Excess liquid drained
+citrus_peel,1,Non-food material removed
+citrus_peel,2,Excess liquid drained
+watermelon_rind,1,Non-food material removed
+watermelon_rind,2,Excess liquid drained
+cotton_quilt,1,Local disposal route confirmed
+cotton_quilt,2,District report completed
+suitcase,1,Local disposal route confirmed
+suitcase,2,District report completed
+bicycle,1,Local disposal route confirmed
+bicycle,2,District report completed
+stroller,1,Local disposal route confirmed
+stroller,2,District report completed
+carpet,1,Local disposal route confirmed
+carpet,2,District report completed
+large_stuffed_toy,1,Local disposal route confirmed
+large_stuffed_toy,2,District report completed

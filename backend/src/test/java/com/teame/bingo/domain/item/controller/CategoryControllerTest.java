@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.teame.bingo.domain.item.dto.CategoryResponse;
 import com.teame.bingo.domain.item.service.CategoryService;
+import com.teame.bingo.domain.item.service.ItemService;
 import com.teame.bingo.global.config.SecurityConfig;
 import com.teame.bingo.global.exception.SecurityExceptionHandler;
 
@@ -29,6 +30,9 @@ class CategoryControllerTest {
 
     @MockitoBean
     private CategoryService categoryService;
+
+    @MockitoBean
+    private ItemService itemService;
 
     @MockitoBean
     private JwtDecoder jwtDecoder;

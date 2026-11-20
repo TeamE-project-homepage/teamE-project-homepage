@@ -96,7 +96,8 @@ class ItemControllerTest {
         mockMvc.perform(get("/api/items/{itemId}", itemId))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.error.code").value("COMMON_400"));
+                .andExpect(jsonPath("$.error.code").value("COMMON_400"))
+                .andExpect(jsonPath("$.error.message").value("itemId: must be greater than 0"));
 
         verifyNoInteractions(itemService);
     }

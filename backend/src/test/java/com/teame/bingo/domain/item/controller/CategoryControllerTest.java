@@ -121,7 +121,8 @@ class CategoryControllerTest {
         mockMvc.perform(get("/api/categories/{categoryId}/items", categoryId))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.error.code").value("COMMON_400"));
+                .andExpect(jsonPath("$.error.code").value("COMMON_400"))
+                .andExpect(jsonPath("$.error.message").value("categoryId: must be greater than 0"));
 
         verifyNoInteractions(itemService);
     }

@@ -26,6 +26,12 @@ public class ItemService {
                 .toList();
     }
 
+    public ItemSummaryResponse getItem(Long itemId) {
+        return itemRepository.findWithCategoryById(itemId)
+                .map(ItemConverter::toItemSummaryResponse)
+                .orElseThrow(() -> new CustomException(ErrorCode.ITEM_NOT_FOUND));
+    }
+
     public List<ItemSummaryResponse> getItemsByCategory(Long categoryId) {
         if (!categoryRepository.existsById(categoryId)) {
             throw new CustomException(ErrorCode.CATEGORY_NOT_FOUND);

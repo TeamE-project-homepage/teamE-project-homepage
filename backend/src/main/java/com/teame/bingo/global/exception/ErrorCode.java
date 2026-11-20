@@ -17,7 +17,8 @@ public enum ErrorCode {
     INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON_500", "An unexpected error occurred."),
 
     // Domain codes go below the common ones: from() returns the first match for a status.
-    CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "CATEGORY_404", "Category not found.");
+    CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "CATEGORY_404", "Category not found."),
+    ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "ITEM_404", "Item not found.");
 
     private final HttpStatus status;
     private final String code;

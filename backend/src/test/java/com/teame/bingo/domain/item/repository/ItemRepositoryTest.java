@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.hibernate.Hibernate;
 import org.junit.jupiter.api.Test;
@@ -147,6 +148,26 @@ class ItemRepositoryTest {
     @Test
     void returnsEmptyListWhenNoItemsExist() {
         assertThat(itemRepository.findAllOrderByCategoryAndName()).isEmpty();
+    }
+
+    @Test
+    void findsItemWithCategoryInitialized() {
+        Category category = tem.persist(Category.builder().code("PL").name("Plastic").build());
+        DisposalType type = tem.persist(DisposalType.builder().code("RECYCLABLE").name("Recyclable Waste").build());
+        Item saved = persistItem(category, type, "Bottle");
+        tem.flush();
+        tem.clear();
+
+        Optional<Item> result = itemRepository.findWithCategoryById(saved.getId());
+
+        assertThat(result).isPresent();
+        assertThat(result.get().getName()).isEqualTo("Bottle");
+        assertThat(Hibernate.isInitialized(result.get().getCategory())).isTrue();
+    }
+
+    @Test
+    void returnsEmptyOptionalForUnknownItemId() {
+        assertThat(itemRepository.findWithCategoryById(999999L)).isEmpty();
     }
 
     private Item persistItem(Category category, DisposalType type, String name) {

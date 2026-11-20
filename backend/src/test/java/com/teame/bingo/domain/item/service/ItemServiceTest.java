@@ -6,6 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -58,6 +59,34 @@ class ItemServiceTest {
         given(itemRepository.findAllOrderByCategoryAndName()).willReturn(List.of());
 
         assertThat(itemService.getItems()).isEmpty();
+    }
+
+    @Test
+    void getItemMapsFoundItemToSummary() {
+        Category category = Category.builder().id(1L).code("PL").name("Plastic").build();
+        DisposalType type = DisposalType.builder().id(3L).code("RECYCLABLE").name("Recyclable Waste").build();
+        given(itemRepository.findWithCategoryById(10L)).willReturn(Optional.of(
+                Item.builder().id(10L).category(category).disposalType(type).name("Bottle").build()));
+
+        ItemSummaryResponse result = itemService.getItem(10L);
+
+        assertThat(result.itemId()).isEqualTo(10L);
+        assertThat(result.name()).isEqualTo("Bottle");
+        assertThat(result.categoryId()).isEqualTo(1L);
+        assertThat(result.categoryCode()).isEqualTo("PL");
+        assertThat(result.categoryName()).isEqualTo("Plastic");
+        assertThat(result.disposalTypeId()).isEqualTo(3L);
+    }
+
+    @Test
+    void getItemThrowsWhenItemMissing() {
+        given(itemRepository.findWithCategoryById(99L)).willReturn(Optional.empty());
+
+        assertThatThrownBy(() -> itemService.getItem(99L))
+                .isInstanceOfSatisfying(CustomException.class, e -> {
+                    assertThat(e.getErrorCode()).isEqualTo(ErrorCode.ITEM_NOT_FOUND);
+                    assertThat(e.getMessage()).isEqualTo("Item not found.");
+                });
     }
 
     @Test

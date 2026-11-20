@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
+    @Query("select i from Item i join fetch i.category c order by c.sortOrder, c.id, lower(i.name), i.id")
+    List<Item> findAllOrderByCategoryAndName();
+
     @Query("select i from Item i join fetch i.category where i.category.id = :categoryId order by lower(i.name), i.id")
     List<Item> findAllByCategoryIdOrderByName(@Param("categoryId") Long categoryId);
 }

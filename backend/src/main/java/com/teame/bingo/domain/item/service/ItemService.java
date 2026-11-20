@@ -20,6 +20,12 @@ public class ItemService {
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
 
+    public List<ItemSummaryResponse> getItems() {
+        return itemRepository.findAllOrderByCategoryAndName().stream()
+                .map(ItemConverter::toItemSummaryResponse)
+                .toList();
+    }
+
     public List<ItemSummaryResponse> getItemsByCategory(Long categoryId) {
         if (!categoryRepository.existsById(categoryId)) {
             throw new CustomException(ErrorCode.CATEGORY_NOT_FOUND);

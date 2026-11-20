@@ -16,9 +16,12 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.teame.bingo.domain.item.dto.CategoryResponse;
+import com.teame.bingo.domain.item.dto.ItemSummaryResponse;
 import com.teame.bingo.domain.item.service.CategoryService;
 import com.teame.bingo.domain.item.service.ItemService;
 import com.teame.bingo.global.config.SecurityConfig;
+import com.teame.bingo.global.exception.CustomException;
+import com.teame.bingo.global.exception.ErrorCode;
 import com.teame.bingo.global.exception.SecurityExceptionHandler;
 
 @WebMvcTest(CategoryController.class)
@@ -61,5 +64,51 @@ class CategoryControllerTest {
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data").isArray())
                 .andExpect(jsonPath("$.data").isEmpty());
+    }
+
+    @Test
+    void listsCategoryItems() throws Exception {
+        given(itemService.getItemsByCategory(1L)).willReturn(List.of(
+                new ItemSummaryResponse(10L, "PET Bottle", 1L, "PL", "Plastic", 3L)));
+
+        mockMvc.perform(get("/api/categories/1/items"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.data[0].itemId").value(10))
+                .andExpect(jsonPath("$.data[0].name").value("PET Bottle"))
+                .andExpect(jsonPath("$.data[0].categoryId").value(1))
+                .andExpect(jsonPath("$.data[0].categoryCode").value("PL"))
+                .andExpect(jsonPath("$.data[0].categoryName").value("Plastic"))
+                .andExpect(jsonPath("$.data[0].disposalTypeId").value(3));
+    }
+
+    @Test
+    void returnsEmptyArrayWhenCategoryHasNoItems() throws Exception {
+        given(itemService.getItemsByCategory(1L)).willReturn(List.of());
+
+        mockMvc.perform(get("/api/categories/1/items"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.success").value(true))
+                .andExpect(jsonPath("$.data").isArray())
+                .andExpect(jsonPath("$.data").isEmpty());
+    }
+
+    @Test
+    void returnsNotFoundForUnknownCategory() throws Exception {
+        given(itemService.getItemsByCategory(99L))
+                .willThrow(new CustomException(ErrorCode.RESOURCE_NOT_FOUND, "Category not found."));
+
+        mockMvc.perform(get("/api/categories/99/items"))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error.code").value("COMMON_404"))
+                .andExpect(jsonPath("$.error.message").value("Category not found."));
+    }
+
+    @Test
+    void returnsBadRequestForNonNumericCategoryId() throws Exception {
+        mockMvc.perform(get("/api/categories/abc/items"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error.code").value("COMMON_400"));
     }
 }

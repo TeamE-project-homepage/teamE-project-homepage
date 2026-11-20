@@ -35,6 +35,32 @@ class ItemServiceTest {
     private ItemService itemService;
 
     @Test
+    void getItemsMapsRepositoryOrderToSummaries() {
+        Category plastic = Category.builder().id(1L).code("PL").name("Plastic").build();
+        Category glass = Category.builder().id(2L).code("GL").name("Glass").build();
+        DisposalType type = DisposalType.builder().id(3L).code("RECYCLABLE").name("Recyclable Waste").build();
+        given(itemRepository.findAllOrderByCategoryAndName()).willReturn(List.of(
+                Item.builder().id(11L).category(plastic).disposalType(type).name("Cup").build(),
+                Item.builder().id(10L).category(glass).disposalType(type).name("Bottle").build()));
+
+        List<ItemSummaryResponse> result = itemService.getItems();
+
+        assertThat(result).extracting(ItemSummaryResponse::name).containsExactly("Cup", "Bottle");
+        assertThat(result.get(0).itemId()).isEqualTo(11L);
+        assertThat(result.get(0).categoryId()).isEqualTo(1L);
+        assertThat(result.get(0).categoryCode()).isEqualTo("PL");
+        assertThat(result.get(0).categoryName()).isEqualTo("Plastic");
+        assertThat(result.get(0).disposalTypeId()).isEqualTo(3L);
+    }
+
+    @Test
+    void getItemsReturnsEmptyListWhenNoItems() {
+        given(itemRepository.findAllOrderByCategoryAndName()).willReturn(List.of());
+
+        assertThat(itemService.getItems()).isEmpty();
+    }
+
+    @Test
     void getItemsByCategoryMapsRepositoryResult() {
         Category category = Category.builder().id(1L).code("PL").name("Plastic").build();
         DisposalType type = DisposalType.builder().id(3L).code("RECYCLABLE").name("Recyclable Waste").build();

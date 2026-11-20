@@ -95,6 +95,60 @@ class ItemRepositoryTest {
         assertThat(itemRepository.findAllByCategoryIdOrderByName(category.getId())).isEmpty();
     }
 
+    @Test
+    void sortsByCategorySortOrderThenNameIgnoringCase() {
+        Category glass = tem.persist(Category.builder().code("GL").name("Glass").sortOrder(2).build());
+        Category plastic = tem.persist(Category.builder().code("PL").name("Plastic").sortOrder(1).build());
+        DisposalType type = tem.persist(DisposalType.builder().code("RECYCLABLE").name("Recyclable Waste").build());
+        persistItem(glass, type, "jar");
+        persistItem(plastic, type, "bottle");
+        persistItem(glass, type, "Bottle");
+        persistItem(plastic, type, "Zip bag");
+        persistItem(plastic, type, "Apple tray");
+        tem.flush();
+        tem.clear();
+
+        List<Item> result = itemRepository.findAllOrderByCategoryAndName();
+
+        assertThat(result).extracting(Item::getName)
+                .containsExactly("Apple tray", "bottle", "Zip bag", "Bottle", "jar");
+    }
+
+    @Test
+    void groupsItemsByCategoryIdWhenSortOrderMatches() {
+        Category first = tem.persist(Category.builder().code("AA").name("Alpha group").sortOrder(1).build());
+        Category second = tem.persist(Category.builder().code("BB").name("Beta group").sortOrder(1).build());
+        DisposalType type = tem.persist(DisposalType.builder().code("RECYCLABLE").name("Recyclable Waste").build());
+        persistItem(second, type, "beta");
+        persistItem(first, type, "gamma");
+        persistItem(first, type, "alpha");
+        tem.flush();
+        tem.clear();
+
+        List<Item> result = itemRepository.findAllOrderByCategoryAndName();
+
+        assertThat(result).extracting(Item::getName).containsExactly("alpha", "gamma", "beta");
+    }
+
+    @Test
+    void fetchesCategoryForAllItems() {
+        Category category = tem.persist(Category.builder().code("PL").name("Plastic").build());
+        DisposalType type = tem.persist(DisposalType.builder().code("RECYCLABLE").name("Recyclable Waste").build());
+        persistItem(category, type, "Bottle");
+        tem.flush();
+        tem.clear();
+
+        List<Item> result = itemRepository.findAllOrderByCategoryAndName();
+
+        assertThat(result).hasSize(1);
+        assertThat(Hibernate.isInitialized(result.get(0).getCategory())).isTrue();
+    }
+
+    @Test
+    void returnsEmptyListWhenNoItemsExist() {
+        assertThat(itemRepository.findAllOrderByCategoryAndName()).isEmpty();
+    }
+
     private Item persistItem(Category category, DisposalType type, String name) {
         return tem.persist(Item.builder()
                 .itemKey("key_" + name).category(category).disposalType(type)

@@ -9,6 +9,7 @@ import com.teame.bingo.domain.item.service.ItemService;
 import com.teame.bingo.global.response.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -36,10 +37,12 @@ public class CategoryController {
                 @io.swagger.v3.oas.annotations.responses.ApiResponse(
                         responseCode = "200", description = "Items in the category"),
                 @io.swagger.v3.oas.annotations.responses.ApiResponse(
-                        responseCode = "404", description = "Category not found")
+                        responseCode = "400", description = "categoryId is not a positive number (COMMON_400)"),
+                @io.swagger.v3.oas.annotations.responses.ApiResponse(
+                        responseCode = "404", description = "Category not found (CATEGORY_404)")
             })
     @GetMapping("/{categoryId}/items")
-    public ApiResponse<List<ItemSummaryResponse>> getCategoryItems(@PathVariable Long categoryId) {
+    public ApiResponse<List<ItemSummaryResponse>> getCategoryItems(@PathVariable @Positive Long categoryId) {
         return ApiResponse.ok(itemService.getItemsByCategory(categoryId));
     }
 }

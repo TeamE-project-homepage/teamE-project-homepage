@@ -22,7 +22,7 @@ public class ItemService {
 
     public List<ItemSummaryResponse> getItemsByCategory(Long categoryId) {
         if (!categoryRepository.existsById(categoryId)) {
-            throw new CustomException(ErrorCode.RESOURCE_NOT_FOUND, "Category not found.");
+            throw new CustomException(ErrorCode.CATEGORY_NOT_FOUND);
         }
         return itemRepository.findAllByCategoryIdOrderByName(categoryId).stream()
                 .map(ItemConverter::toItemSummaryResponse)

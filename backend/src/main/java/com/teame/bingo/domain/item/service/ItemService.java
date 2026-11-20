@@ -2,6 +2,7 @@ package com.teame.bingo.domain.item.service;
 
 import java.util.List;
 
+import com.teame.bingo.domain.item.converter.ItemConverter;
 import com.teame.bingo.domain.item.dto.ItemSummaryResponse;
 import com.teame.bingo.domain.item.repository.CategoryRepository;
 import com.teame.bingo.domain.item.repository.ItemRepository;
@@ -24,7 +25,7 @@ public class ItemService {
             throw new CustomException(ErrorCode.RESOURCE_NOT_FOUND, "Category not found.");
         }
         return itemRepository.findAllByCategoryIdOrderByName(categoryId).stream()
-                .map(ItemSummaryResponse::from)
+                .map(ItemConverter::toItemSummaryResponse)
                 .toList();
     }
 }

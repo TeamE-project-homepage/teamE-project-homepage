@@ -2,6 +2,7 @@ package com.teame.bingo.domain.item.service;
 
 import java.util.List;
 
+import com.teame.bingo.domain.item.converter.ItemConverter;
 import com.teame.bingo.domain.item.dto.CategoryResponse;
 import com.teame.bingo.domain.item.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class CategoryService {
 
     public List<CategoryResponse> getCategories() {
         return categoryRepository.findAllByOrderBySortOrderAscIdAsc().stream()
-                .map(CategoryResponse::from)
+                .map(ItemConverter::toCategoryResponse)
                 .toList();
     }
 }

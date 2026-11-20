@@ -39,7 +39,8 @@ public class ItemController {
                         responseCode = "404", description = "Item not found (ITEM_404)")
             })
     @GetMapping("/{itemId}")
-    public ApiResponse<ItemSummaryResponse> getItem(@PathVariable @Positive Long itemId) {
+    public ApiResponse<ItemSummaryResponse> getItem(
+            @PathVariable @Positive(message = "must be greater than 0") Long itemId) {
         return ApiResponse.ok(itemService.getItem(itemId));
     }
 }

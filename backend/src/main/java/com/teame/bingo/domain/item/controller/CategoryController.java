@@ -42,7 +42,8 @@ public class CategoryController {
                         responseCode = "404", description = "Category not found (CATEGORY_404)")
             })
     @GetMapping("/{categoryId}/items")
-    public ApiResponse<List<ItemSummaryResponse>> getCategoryItems(@PathVariable @Positive Long categoryId) {
+    public ApiResponse<List<ItemSummaryResponse>> getCategoryItems(
+            @PathVariable @Positive(message = "must be greater than 0") Long categoryId) {
         return ApiResponse.ok(itemService.getItemsByCategory(categoryId));
     }
 }

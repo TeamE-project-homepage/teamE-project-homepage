@@ -2,6 +2,7 @@ package com.teame.bingo.domain.district.service;
 
 import java.util.List;
 
+import com.teame.bingo.domain.district.converter.DistrictConverter;
 import com.teame.bingo.domain.district.dto.DistrictResponse;
 import com.teame.bingo.domain.district.repository.DistrictRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class DistrictService {
 
     public List<DistrictResponse> getDistricts() {
         return districtRepository.findAllByOrderByNameEnAsc().stream()
-                .map(DistrictResponse::from)
+                .map(DistrictConverter::toDistrictResponse)
                 .toList();
     }
 }

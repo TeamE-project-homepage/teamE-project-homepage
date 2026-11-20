@@ -59,7 +59,7 @@ class ItemServiceTest {
 
         assertThatThrownBy(() -> itemService.getItemsByCategory(99L))
                 .isInstanceOfSatisfying(CustomException.class, e -> {
-                    assertThat(e.getErrorCode()).isEqualTo(ErrorCode.RESOURCE_NOT_FOUND);
+                    assertThat(e.getErrorCode()).isEqualTo(ErrorCode.CATEGORY_NOT_FOUND);
                     assertThat(e.getMessage()).isEqualTo("Category not found.");
                 });
         verifyNoInteractions(itemRepository);

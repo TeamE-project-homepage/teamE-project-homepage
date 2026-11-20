@@ -1,6 +1,7 @@
 package com.teame.bingo.domain.item.controller;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -8,6 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
@@ -96,12 +99,12 @@ class CategoryControllerTest {
     @Test
     void returnsNotFoundForUnknownCategory() throws Exception {
         given(itemService.getItemsByCategory(99L))
-                .willThrow(new CustomException(ErrorCode.RESOURCE_NOT_FOUND, "Category not found."));
+                .willThrow(new CustomException(ErrorCode.CATEGORY_NOT_FOUND));
 
         mockMvc.perform(get("/api/categories/99/items"))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.success").value(false))
-                .andExpect(jsonPath("$.error.code").value("COMMON_404"))
+                .andExpect(jsonPath("$.error.code").value("CATEGORY_404"))
                 .andExpect(jsonPath("$.error.message").value("Category not found."));
     }
 
@@ -110,5 +113,16 @@ class CategoryControllerTest {
         mockMvc.perform(get("/api/categories/abc/items"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error.code").value("COMMON_400"));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "-1"})
+    void returnsBadRequestForNonPositiveCategoryId(String categoryId) throws Exception {
+        mockMvc.perform(get("/api/categories/{categoryId}/items", categoryId))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.error.code").value("COMMON_400"));
+
+        verifyNoInteractions(itemService);
     }
 }

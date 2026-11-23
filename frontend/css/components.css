@@ -1,9 +1,6 @@
 /* BinGo common components, styled from the Figma design.
    Class names are the contract with the JS owner (frontend/js), keep them stable. */
 
-/* footer */
-.site-footer { margin-top: 40px; padding-block: var(--gap); font-size: 13px; color: var(--color-gray-500); text-align: center; }
-
 /* bottom tab bar: Home, Search, Camera, My Page. The current tab has aria-current="page". */
 .bottom-nav {
   position: fixed; left: 50%; bottom: 0; z-index: 10;

@@ -21,8 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class ItemService {
 
     private static final int MAX_QUERY_LENGTH = 50;
-    // pg_trgm's own default for the % operator (pg_trgm.similarity_threshold).
-    private static final double SIMILARITY_THRESHOLD = 0.3;
 
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
@@ -59,7 +57,7 @@ public class ItemService {
         String normalized = query.replaceAll("\\s+", " ").toLowerCase(Locale.ROOT);
         String prefix = normalized.replaceAll("([\\\\%_])", "\\\\$1") + "%";
 
-        List<SearchItemResponse> items = itemRepository.search(normalized, prefix, SIMILARITY_THRESHOLD, limit)
+        List<SearchItemResponse> items = itemRepository.search(normalized, prefix, limit)
                 .stream()
                 .map(ItemConverter::toSearchItemResponse)
                 .toList();

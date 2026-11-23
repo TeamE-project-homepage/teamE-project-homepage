@@ -137,7 +137,7 @@ class ItemServiceTest {
     @Test
     void searchNormalizesQueryForRepositoryAndKeepsTrimmedQueryInResponse() {
         ItemSearchRow row = searchRow(3L, "PET Bottle", "plastic bottle");
-        given(itemRepository.search("plastic bottle", "plastic bottle%", 0.3, 20)).willReturn(List.of(row));
+        given(itemRepository.search("plastic bottle", "plastic bottle%", 20)).willReturn(List.of(row));
 
         SearchResponse result = itemService.search("  Plastic   Bottle ", 20);
 
@@ -149,7 +149,7 @@ class ItemServiceTest {
 
     @Test
     void searchEscapesLikeWildcardsInPrefix() {
-        given(itemRepository.search("100%_off\\", "100\\%\\_off\\\\%", 0.3, 20)).willReturn(List.of());
+        given(itemRepository.search("100%_off\\", "100\\%\\_off\\\\%", 20)).willReturn(List.of());
 
         assertThat(itemService.search("100%_off\\", 20).items()).isEmpty();
     }

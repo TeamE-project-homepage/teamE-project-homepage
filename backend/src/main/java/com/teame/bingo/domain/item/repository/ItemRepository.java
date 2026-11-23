@@ -22,12 +22,12 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 
     /**
      * Searches item names and their keywords (aliases) with pg_trgm. Each item keeps its best match:
-     * exact name (0), exact keyword (1), prefix (2), then trigram similarity (3), ties broken by
-     * similarity. Postgres only; the pg_trgm extension must be enabled on the database.
+     * exact name (0), exact keyword (1), prefix (2), then the pg_trgm {@code %} operator (3), with ties
+     * broken by similarity(). {@code %} uses pg_trgm.similarity_threshold (default 0.3) and can use a
+     * GIN trigram index. Postgres only; the pg_trgm extension must be enabled on the database.
      *
      * @param query     lower-cased search term
      * @param prefix    query with LIKE wildcards escaped, followed by %
-     * @param threshold minimum similarity() for a fuzzy match
      */
     @Query(value = """
             SELECT best.item_id AS "itemId", best.name AS "name", c.category_id AS "categoryId",
@@ -42,7 +42,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
                            similarity(lower(i.name), :query) AS score
                     FROM item i
                     WHERE lower(i.name) LIKE :prefix ESCAPE '\\'
-                       OR similarity(lower(i.name), :query) >= :threshold
+                       OR lower(i.name) % :query
                     UNION ALL
                     SELECT i.item_id, i.name, i.category_id, k.keyword,
                            CASE WHEN lower(k.keyword) = :query THEN 1
@@ -52,7 +52,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
                     FROM item_keyword k
                     JOIN item i ON i.item_id = k.item_id
                     WHERE lower(k.keyword) LIKE :prefix ESCAPE '\\'
-                       OR similarity(lower(k.keyword), :query) >= :threshold
+                       OR lower(k.keyword) % :query
                 ) m
                 ORDER BY m.item_id, m.match_rank, m.score DESC, m.matched_keyword IS NOT NULL
             ) best
@@ -63,6 +63,5 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     List<ItemSearchRow> search(
             @Param("query") String query,
             @Param("prefix") String prefix,
-            @Param("threshold") double threshold,
             @Param("limit") int limit);
 }

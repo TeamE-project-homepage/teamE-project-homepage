@@ -81,16 +81,33 @@
 /* badge: disposal type label (text always shown) */
 .badge { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--color-lime-100); color: var(--color-lime-600); font-size: 14px; font-weight: 600; }
 
+/* back arrow (top left of a screen) */
+.back-link { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin-left: -10px; border-radius: 22px; }
+.back-link svg { width: 24px; height: 24px; }
+
+/* white rounded panel (steps card, district rules) */
+.panel, .info-box { padding: 20px; border-radius: var(--radius-card); background: var(--color-white); }
+
 /* disposal result banner (the lime / red fade comes from the page background classes) */
 .result-banner { padding-block: 8px; }
-.result-banner > * + * { margin-top: 6px; }
-.result-banner h2 { margin-top: 4px; font-size: clamp(34px, 9vw, 42px); font-weight: 800; line-height: 1.02; letter-spacing: -0.055em; }
+.result-item { font-size: 15px; font-weight: 500; color: var(--color-gray-500); }
+.result-banner h1 { margin-top: 4px; }
+.result-status { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; margin-top: 10px; color: var(--color-gray-500); }
+.result-status::before {
+  content: ""; width: 20px; height: 20px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236a9951' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='m5 12.5 4.5 4.5L19 7.5'/></svg>") no-repeat center / contain;
+}
+.result-status strong { color: var(--color-ink); font-weight: 700; }
+.result-status[data-state="not-recyclable"]::before {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e5484d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M6 6l12 12M18 6 6 18'/></svg>");
+}
+.btn svg { margin-right: 8px; }
 
 /* notice box: conditions, warnings, missing-info messages */
 .notice { padding: 14px 16px; border-left: 4px solid var(--color-lime-600); border-radius: 14px; background: var(--color-white); }
 
 /* step list: number of steps comes from item data */
-.steps { display: grid; gap: 0; grid-template-columns: 1fr; padding: 8px 20px; border-radius: var(--radius-card); background: var(--color-white); }
+.steps { display: grid; gap: 0; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .steps { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0 20px; } }
 .step { display: flex; align-items: center; gap: 16px; padding: 16px 0; font-weight: 700; font-size: 17px; }
 .step + .step { border-top: 1px solid var(--color-line); }
@@ -98,7 +115,6 @@
 .step-image { flex: none; width: 48px; height: 48px; border-radius: 14px; background: var(--color-gray-50); }
 
 /* key/value info (district rules) */
-.info-box { padding: 16px 20px; border-radius: var(--radius-card); background: var(--color-white); }
 .info-list { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; }
 .info-list dt { color: var(--color-gray-500); }
 .info-list dd { font-weight: 600; }
@@ -131,8 +147,15 @@
 .modal-box { width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 24px 20px calc(20px + env(safe-area-inset-bottom)); border-radius: var(--radius-sheet) var(--radius-sheet) 0 0; background: var(--color-white); }
 .modal-box h2 { font-size: 30px; font-weight: 800; line-height: 1.05; letter-spacing: -0.04em; }
 @media (min-width: 640px) { .modal { align-items: center; } .modal-box { border-radius: var(--radius-sheet); } }
-.check-item { display: flex; gap: 12px; align-items: center; padding: 14px; margin-bottom: 8px; border-radius: 14px; background: var(--color-gray-50); font-weight: 600; }
-.check-item input { width: 22px; height: 22px; accent-color: var(--color-lime-600); }
+.modal-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.modal-close { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; border-radius: 20px; }
+.modal-close svg { width: 22px; height: 22px; }
+.modal-box > .muted { margin-top: 6px; font-size: 14px; }
+.check-list { display: grid; gap: 8px; margin-block: 16px; }
+.check-item { display: flex; gap: 12px; align-items: center; min-height: 54px; padding: 14px; border-radius: 14px; background: var(--color-gray-50); font-weight: 400; color: var(--color-gray-500); }
+.check-item:has(input:checked) { font-weight: 700; color: var(--color-ink); }
+.check-item input { flex: none; width: 22px; height: 22px; accent-color: var(--color-lime-600); }
+.modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
 /* tabs (login / sign up) */
 .tabs { display: flex; gap: 4px; padding: 4px; border-radius: 16px; background: var(--color-white); }

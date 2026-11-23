@@ -61,6 +61,10 @@ body.page-top-lime {
   background-image: linear-gradient(180deg, var(--color-lime-glow) 0, rgba(160, 202, 104, 0) 300px);
   background-repeat: no-repeat;
 }
+body.page-top-red {
+  background-image: linear-gradient(180deg, rgba(229, 72, 77, 0.28) 0, rgba(229, 72, 77, 0) 300px);
+  background-repeat: no-repeat;
+}
 body.page-bottom-lime {
   background-image: radial-gradient(ellipse 70% 140px at 50% 100%, var(--color-lime-glow), rgba(160, 202, 104, 0));
   background-repeat: no-repeat;
@@ -85,4 +89,5 @@ main > * + * { margin-top: var(--gap); }
 /* leave room for the fixed bottom tab bar */
 body.has-bottom-nav { padding-bottom: calc(var(--nav-height) + 24px); }
 
+[hidden] { display: none !important; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

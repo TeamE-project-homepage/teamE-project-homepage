@@ -10,16 +10,22 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullSource;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.teame.bingo.domain.item.dto.ItemSummaryResponse;
+import com.teame.bingo.domain.item.dto.SearchItemResponse;
+import com.teame.bingo.domain.item.dto.SearchResponse;
 import com.teame.bingo.domain.item.entity.Category;
 import com.teame.bingo.domain.item.entity.DisposalType;
 import com.teame.bingo.domain.item.entity.Item;
 import com.teame.bingo.domain.item.repository.CategoryRepository;
 import com.teame.bingo.domain.item.repository.ItemRepository;
+import com.teame.bingo.domain.item.repository.ItemSearchRow;
 import com.teame.bingo.global.exception.CustomException;
 import com.teame.bingo.global.exception.ErrorCode;
 
@@ -126,5 +132,56 @@ class ItemServiceTest {
         given(itemRepository.findAllByCategoryIdOrderByName(1L)).willReturn(List.of());
 
         assertThat(itemService.getItemsByCategory(1L)).isEmpty();
+    }
+
+    @Test
+    void searchNormalizesQueryForRepositoryAndKeepsTrimmedQueryInResponse() {
+        ItemSearchRow row = searchRow(3L, "PET Bottle", "plastic bottle");
+        given(itemRepository.search("plastic bottle", "plastic bottle%", 0.3, 20)).willReturn(List.of(row));
+
+        SearchResponse result = itemService.search("  Plastic   Bottle ", 20);
+
+        assertThat(result.query()).isEqualTo("Plastic   Bottle");
+        assertThat(result.totalCount()).isEqualTo(1);
+        assertThat(result.items()).containsExactly(
+                new SearchItemResponse(3L, "PET Bottle", 1L, "PL", "Plastic", "plastic bottle"));
+    }
+
+    @Test
+    void searchEscapesLikeWildcardsInPrefix() {
+        given(itemRepository.search("100%_off\\", "100\\%\\_off\\\\%", 0.3, 20)).willReturn(List.of());
+
+        assertThat(itemService.search("100%_off\\", 20).items()).isEmpty();
+    }
+
+    @ParameterizedTest
+    @NullSource
+    @ValueSource(strings = {"", "   "})
+    void searchRejectsMissingOrBlankQuery(String query) {
+        assertThatThrownBy(() -> itemService.search(query, 20))
+                .isInstanceOf(CustomException.class)
+                .extracting(e -> ((CustomException) e).getErrorCode())
+                .isEqualTo(ErrorCode.SEARCH_QUERY_REQUIRED);
+        verifyNoInteractions(itemRepository);
+    }
+
+    @Test
+    void searchRejectsQueryOverFiftyCharactersAfterTrim() {
+        assertThatThrownBy(() -> itemService.search("a".repeat(51), 20))
+                .isInstanceOf(CustomException.class)
+                .extracting(e -> ((CustomException) e).getErrorCode())
+                .isEqualTo(ErrorCode.INVALID_INPUT);
+        verifyNoInteractions(itemRepository);
+    }
+
+    private static ItemSearchRow searchRow(Long itemId, String name, String matchedKeyword) {
+        return new ItemSearchRow() {
+            public Long getItemId() { return itemId; }
+            public String getName() { return name; }
+            public Long getCategoryId() { return 1L; }
+            public String getCategoryCode() { return "PL"; }
+            public String getCategoryName() { return "Plastic"; }
+            public String getMatchedKeyword() { return matchedKeyword; }
+        };
     }
 }

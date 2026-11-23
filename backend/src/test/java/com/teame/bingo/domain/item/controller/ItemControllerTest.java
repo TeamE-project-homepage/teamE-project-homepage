@@ -19,6 +19,8 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.teame.bingo.domain.item.dto.ItemSummaryResponse;
+import com.teame.bingo.domain.item.dto.SearchItemResponse;
+import com.teame.bingo.domain.item.dto.SearchResponse;
 import com.teame.bingo.domain.item.service.ItemService;
 import com.teame.bingo.global.config.SecurityConfig;
 import com.teame.bingo.global.exception.CustomException;
@@ -111,5 +113,32 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.data").isArray())
                 .andExpect(jsonPath("$.data").isEmpty());
+    }
+
+    @Test
+    void searchesItemsPubliclyAndOmitsNullMatchedKeyword() throws Exception {
+        given(itemService.search("Plastic Bottle", 20)).willReturn(new SearchResponse("Plastic Bottle", 2, List.of(
+                new SearchItemResponse(3L, "PET Bottle", 1L, "PL", "Plastic", "plastic bottle"),
+                new SearchItemResponse(21L, "Plastic Bottle Cap", 1L, "PL", "Plastic", null))));
+
+        mockMvc.perform(get("/api/items/search").param("q", "Plastic Bottle"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.query").value("Plastic Bottle"))
+                .andExpect(jsonPath("$.data.totalCount").value(2))
+                .andExpect(jsonPath("$.data.items[0].itemId").value(3))
+                .andExpect(jsonPath("$.data.items[0].categoryCode").value("PL"))
+                .andExpect(jsonPath("$.data.items[0].matchedKeyword").value("plastic bottle"))
+                .andExpect(jsonPath("$.data.items[1].matchedKeyword").doesNotExist());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"0", "51"})
+    void rejectsSearchLimitOutOfRange(String limit) throws Exception {
+        mockMvc.perform(get("/api/items/search").param("q", "can").param("limit", limit))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error.code").value("COMMON_400"))
+                .andExpect(jsonPath("$.error.message").value("limit: must be between 1 and 50"));
+
+        verifyNoInteractions(itemService);
     }
 }

@@ -10,25 +10,50 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body class="has-bottom-nav">
+<body class="page-auth">
   <main class="container">
+    <!-- The form fields have no name attribute on purpose: nothing (password included) is ever sent in the address bar.
+         The JavaScript reads the values by id. -->
+    <div class="auth-wrap">
 
-    <p><a href="index.html">&larr; Back</a></p>
-    <h1>Log in / Sign up</h1>
-    <div class="tabs"><a href="login.html" aria-current="page">Log in</a><a href="login.html#signup">Sign up</a></div>
-    <form class="section" action="mypage.html">
-      <div class="field"><label for="email">Email</label><input id="email" type="email" required></div>
-      <div class="field"><label for="pw">Password</label><input id="pw" type="password" required><span class="error">Error message area</span></div>
-      <button class="btn btn-block" type="submit">Log in</button>
-    </form>
-    <p><a href="index.html">Continue without an account</a></p>
+      <header class="brand">
+        <svg class="brand-logo" viewBox="0 0 52 44" aria-hidden="true"><rect width="52" height="44" rx="14" fill="#111111"/><rect x="11" y="18" width="7" height="16" rx="3.5" fill="#a0ca68"/><rect x="22.5" y="10" width="7" height="24" rx="3.5" fill="#a0ca68"/><rect x="34" y="16" width="7" height="18" rx="3.5" fill="#a0ca68"/></svg>
+        <p class="eyebrow">Sort it right</p>
+        <h1>BinGo</h1>
+        <p class="lead">A simple guide for everyday waste.</p>
+      </header>
 
+      <section class="auth-card" id="signup" aria-labelledby="signup-title">
+        <div class="tabs"><a href="#signup" aria-current="page">Sign up</a><a href="#login">Log in</a></div>
+        <h2 id="signup-title">Create your account</h2>
+        <p class="muted">Start sorting with confidence.</p>
+        <form id="signup-form" action="mypage.html">
+          <div class="field"><label for="signup-name">Name</label><input id="signup-name" type="text" placeholder="Your name" autocomplete="name" required></div>
+          <div class="field"><label for="signup-email">Email</label><input id="signup-email" type="email" placeholder="you@email.com" autocomplete="email" required></div>
+          <div class="field"><label for="signup-password">Password</label><input id="signup-password" type="password" placeholder="At least 8 characters" autocomplete="new-password" minlength="8" required><span class="error" id="signup-error" role="alert" hidden></span></div>
+          <button class="btn btn-block" type="submit">Create account</button>
+        </form>
+      </section>
+
+      <section class="auth-card" id="login" aria-labelledby="login-title">
+        <div class="tabs"><a href="#signup">Sign up</a><a href="#login" aria-current="page">Log in</a></div>
+        <h2 id="login-title">Welcome back</h2>
+        <p class="muted">Log in to continue to BinGo.</p>
+        <form id="login-form" action="mypage.html">
+          <div class="field"><label for="login-email">Email</label><input id="login-email" type="email" placeholder="you@email.com" autocomplete="email" required></div>
+          <div class="field"><label for="login-password">Password</label><input id="login-password" type="password" placeholder="At least 8 characters" autocomplete="current-password" required><span class="error" id="login-error" role="alert" hidden></span></div>
+          <button class="btn btn-block" type="submit">Log in</button>
+        </form>
+      </section>
+
+      <p class="center"><a class="text-link" href="index.html">Continue as guest</a></p>
+
+    </div>
   </main>
 
   <footer class="site-footer container">
     <p>Footer: disclaimer text, repository link</p>
   </footer>
 
-  <nav class="bottom-nav" aria-label="Main"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M10 20v-5h4v5"/></svg><span>Home</span></a><a href="items.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span>Search</span></a><a href="photo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Camera</span></a><a href="mypage.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/></svg><span>My Page</span></a></nav>
 </body>
 </html>

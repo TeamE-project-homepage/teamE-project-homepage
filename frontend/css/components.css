@@ -202,7 +202,47 @@
 .check-item input { flex: none; width: 22px; height: 22px; accent-color: var(--color-lime-600); }
 .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 
-/* tabs (login / sign up) */
-.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 16px; background: var(--color-white); }
-.tabs a { flex: 1; padding: 10px; border-radius: 12px; text-align: center; text-decoration: none; font-weight: 600; color: var(--color-gray-500); }
-.tabs a[aria-current="page"] { background: var(--color-ink); color: var(--color-white); }
+/* tabs (login / sign up): the current tab is a white pill */
+.tabs { display: flex; gap: 4px; padding: 4px; border-radius: 16px; background: var(--color-gray-50); }
+.tabs a { flex: 1; padding: 11px 10px; border-radius: 12px; text-align: center; text-decoration: none; font-weight: 600; color: var(--color-gray-500); }
+.tabs a[aria-current="page"] { background: var(--color-white); color: var(--color-ink); box-shadow: 0 1px 4px rgba(17, 17, 17, 0.1); }
+
+/* login / sign up page: brand header + white card. The two cards switch with the #signup link, no JavaScript needed. */
+.auth-wrap { max-width: 440px; margin-inline: auto; }
+.auth-wrap > * + * { margin-top: 16px; }
+.brand > * + * { margin-top: 8px; }
+.brand-logo { width: 52px; height: 44px; margin-bottom: 14px; }
+.brand h1 { font-size: 46px; }
+.auth-card { padding: 20px; border-radius: var(--radius-sheet); background: var(--color-white); }
+.auth-card h2 { margin-top: 22px; font-size: 24px; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; }
+.auth-card > .muted { margin-top: 4px; font-size: 14px; }
+.auth-card form { margin-top: 16px; }
+.auth-card .field:last-of-type { margin-bottom: 20px; }
+#signup { display: none; }
+#signup:target { display: block; }
+#signup:target ~ #login { display: none; }
+
+/* My Page: saved guides and recent searches */
+.panel + .panel { margin-top: var(--gap); }
+.panel .section-head { margin-bottom: 6px; }
+.panel > h2 { margin-bottom: 6px; }
+.saved-item { display: flex; align-items: center; gap: 12px; padding: 12px 0; }
+.saved-item + .saved-item { border-top: 1px solid var(--color-line); }
+.saved-link { display: flex; flex: 1; align-items: center; gap: 14px; min-width: 0; text-decoration: none; }
+.saved-thumb { flex: none; width: 48px; height: 48px; border-radius: 12px; background: var(--color-gray-50); }
+.saved-text { display: grid; min-width: 0; }
+.saved-text strong { font-size: 17px; line-height: 1.4; overflow-wrap: anywhere; }
+.saved-text .muted { font-size: 14px; }
+.icon-btn { display: grid; place-items: center; flex: none; width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--color-gray-500); cursor: pointer; }
+.icon-btn svg { width: 20px; height: 20px; }
+.icon-btn:hover { background: var(--color-gray-50); }
+.icon-btn.is-saved { color: var(--color-lime-600); }
+.recent-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; font-weight: 500; }
+.recent-item + .recent-item { border-top: 1px solid var(--color-line); }
+.recent-item > svg { flex: none; width: 20px; height: 20px; color: var(--color-gray-500); }
+.recent-item .grow { flex: 1; min-width: 0; text-decoration: none; overflow-wrap: anywhere; }
+.text-btn { padding: 0; border: 0; background: none; font-size: 14px; font-weight: 600; color: var(--color-gray-500); cursor: pointer; }
+.empty { display: grid; justify-items: center; gap: 4px; padding: 24px 0 8px; text-align: center; }
+.empty svg { width: 48px; height: 48px; margin-bottom: 12px; color: var(--color-ink); }
+.empty strong { font-size: 18px; }
+.empty .muted { font-size: 14px; }

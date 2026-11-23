@@ -12,16 +12,22 @@
 </head>
 <body class="has-bottom-nav page-bottom-lime">
   <main class="container">
+    <!-- Variants: non-user = this title. Logged-in user = <p class="eyebrow">Welcome to BinGo</p> above a title "Where are you throwing it away?". -->
 
-    <p><a href="index.html">&larr; Back</a></p>
-    <h1>District selection</h1>
-    <p>Choose your Seoul district.</p>
-    <div class="field">
+    <header class="page-head">
+      <h1>Choose your<br>Seoul District</h1>
+      <p class="lead">Choose your district for local disposal guidance</p>
+    </header>
+
+    <!-- used by district.js; hidden from the screen because the design shows only the list -->
+    <div class="field visually-hidden">
       <label for="district">District</label>
       <select id="district" name="district"><option value="">Select a district</option></select>
     </div>
-    <p id="district-status" role="status"></p>
+    <p class="muted" id="district-status" role="status"></p>
     <ul class="list" id="district-list"></ul>
+
+    <a class="btn btn-block" id="confirm-district" href="index.html">Confirm district</a>
 
   </main>
 

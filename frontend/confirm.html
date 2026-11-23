@@ -13,15 +13,16 @@
 <body class="has-bottom-nav page-bottom-lime">
   <main class="container">
 
-    <p><a href="photo.html">&larr; Back</a></p>
-    <div class="district-bar"><span>District: (selected district)</span><a href="district.html">Change</a></div>
-    <h1>Item confirmation</h1>
-    <div class="preview">photo</div>
-    <section class="section">
-      <h2>Candidates</h2>
-      <div class="grid"><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span></a></div>
+    <a class="back-link" href="photo.html" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></a>
+    <h1>Is this<br>your item?</h1>
+
+    <section aria-label="Candidates">
+      <div class="grid" id="candidate-grid"><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span><span class="card-sub">Category</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span><span class="card-sub">Category</span></a><a class="card" href="result.html"><div class="card-image">image</div><span class="card-title">Item name</span><span class="card-sub">Category</span></a></div>
     </section>
-    <div class="cluster section"><a class="btn" href="result.html">Confirm</a><a class="btn btn-secondary" href="index.html">Search by name</a></div>
+
+    <a class="btn btn-block btn-secondary" id="confirm-item" href="result.html">Confirm Item</a>
+    <p class="center"><a class="text-link" href="photo.html">Try another photo</a></p>
+    <p class="center"><a class="text-link" href="items.html">Click to search item instead</a></p>
 
   </main>
 

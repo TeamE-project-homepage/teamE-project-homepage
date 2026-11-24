@@ -42,7 +42,7 @@ class RecognitionMatcherTest {
 
     @BeforeEach
     void setUp() {
-        ReflectionTestUtils.setField(matcher, "minConfidence", 0.4);
+        ReflectionTestUtils.setField(matcher, "minConfidence", 0.5);
     }
 
     private Category category(long id, String code) {
@@ -61,12 +61,12 @@ class RecognitionMatcherTest {
 
     @Test
     void belowThresholdIsUnmatchedWithoutQueries() {
-        RecognitionMatchResult result = matcher.match("plastic", 0.39);
+        RecognitionMatchResult result = matcher.match("plastic", 0.49);
 
         assertThat(result.matched()).isFalse();
         assertThat(result.candidates()).isEmpty();
         assertThat(result.label()).isEqualTo("plastic");
-        assertThat(result.score()).isEqualTo(0.39);
+        assertThat(result.score()).isEqualTo(0.49);
         verifyNoInteractions(itemRepository, categoryRepository, itemService);
     }
 
@@ -76,7 +76,7 @@ class RecognitionMatcherTest {
         when(categoryRepository.findByCode("PL")).thenReturn(Optional.of(category(3L, "PL")));
         when(itemService.getItemsByCategory(3L)).thenReturn(List.of(summary(1)));
 
-        assertThat(matcher.match("plastic", 0.4).matched()).isTrue();
+        assertThat(matcher.match("plastic", 0.5).matched()).isTrue();
     }
 
     @Test

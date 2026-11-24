@@ -41,3 +41,19 @@ async function fetchDistricts() {
   const districts = await apiGet("/api/districts");
   return districts.map((d) => ({ code: d.code, name: d.nameEn }));
 }
+
+// 서버의 { categoryId, name }을 화면이 쓰는 { id, name }으로 바꾼다
+async function fetchCategories() {
+  const categories = await apiGet("/api/categories");
+  return categories.map((c) => ({ id: c.categoryId, name: c.name }));
+}
+
+// 서버의 품목을 화면이 쓰는 { id, name, category }로 바꾼다
+// categoryId를 넘기면 그 카테고리의 품목만, 비우면 전체 품목을 가져온다
+async function fetchItems(categoryId) {
+  const path = categoryId
+    ? "/api/categories/" + encodeURIComponent(categoryId) + "/items"
+    : "/api/items";
+  const items = await apiGet(path);
+  return items.map((i) => ({ id: i.itemId, name: i.name, category: i.categoryId }));
+}

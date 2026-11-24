@@ -57,3 +57,17 @@ async function fetchItems(categoryId) {
   const items = await apiGet(path);
   return items.map((i) => ({ id: i.itemId, name: i.name, category: i.categoryId }));
 }
+
+// 영어 이름이나 별칭으로 품목을 검색. 서버가 오타와 비슷한 이름도 찾는다.
+// matchedKeyword는 어떤 별칭 때문에 검색됐는지 알려준다.(이름으로 찾았으면 빈 문자열)
+async function searchItems(q) {
+  const result = await apiGet(
+    "/api/items/search?q=" + encodeURIComponent(q.trim()) + "&limit=50"
+  );
+  return result.items.map((i) => ({
+    id: i.itemId,
+    name: i.name,
+    category: i.categoryId,
+    matchedKeyword: i.matchedKeyword || "",
+  }));
+}

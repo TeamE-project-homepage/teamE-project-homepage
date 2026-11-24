@@ -11,13 +11,6 @@ function getParams() {
   };
 }
 
-// 검색어가 있으면 이름에 포함된 품목만 남긴다(서버 검색으로 바꾸는 건 다음 PR)
-function filterByKeyword(items, q) {
-  const keyword = normalize(q);
-  if (!keyword) return items;
-  return items.filter((item) => normalize(item.name).includes(keyword));
-}
-
 function createCard(item) {
   const link = document.createElement("a");
   link.className = "card";
@@ -71,21 +64,24 @@ async function renderItemsPage() {
       : hasQ
         ? "Search"
         : "All items";
-  count.textContent = "";
+  count.textContent = "Loading...";
 
   let categories = [];
   let items;
   try {
     [categories, items] = await Promise.all([
       category ? fetchCategories() : Promise.resolve([]),
-      fetchItems(category),
+      keyword ? searchItems(q) : fetchItems(category),
     ]);
   } catch (e) {
-    if (category && (e.code === "CATEGORY_404" || e.code === "COMMON_400")) {
+    count.textContent = "";
+    if (category && !keyword && (e.code === "CATEGORY_404" || e.code === "COMMON_400")) {
       title.textContent = "Category not found";
       showEmpty("We could not find that category.", "empty");
+    } else if (keyword && e.code === "COMMON_400") {
+      showEmpty("Please use a search keyword of 50 characters or fewer.", "empty");
     } else {
-      title.textContent = category ? "Items" : title.textContent;
+      title.textContent = category && !keyword ? "Items" : title.textContent;
       showEmpty(e.message, "error");
     }
     return;
@@ -94,13 +90,14 @@ async function renderItemsPage() {
   if (category) {
     const categoryInfo = categories.find((c) => String(c.id) === category);
     if (!categoryInfo) {
+      count.textContent = "";
       title.textContent = "Category not found";
       showEmpty("We could not find that category.", "empty");
       return;
     }
     title.textContent = categoryInfo.name;
 
-    // 카테고리 안에서 검색할 수 있게 카테고리를 검색 폼에 넘긴다
+    // 카테고리 안에서 검색할 수 있게 카테고리를 검색 폼에 함께 넘깁니다.
     const hidden = document.createElement("input");
     hidden.type = "hidden";
     hidden.name = "category";
@@ -108,7 +105,10 @@ async function renderItemsPage() {
     document.querySelector(".search-form").appendChild(hidden);
   }
 
-  const shown = filterByKeyword(items, q);
+  // 검색은 전체 품목에서 하므로, 카테고리 안에서 검색한 경우 그 카테고리 품목만 남깁니다.
+  const shown = category && keyword
+    ? items.filter((item) => String(item.category) === category)
+    : items;
   count.textContent = shown.length + (shown.length === 1 ? " item" : " items");
 
   if (shown.length === 0) {

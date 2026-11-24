@@ -10,8 +10,10 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body class="has-bottom-nav page-bottom-lime">
+<body class="has-bottom-nav page-bottom-lime" data-requires-login>
   <main class="container">
+    <!-- Login only: data-requires-login on <body> tells the JavaScript to send logged-out visitors to login.html.
+         After logging in, login.html goes back here (the login form action is mypage.html). -->
 
     <header class="page-head">
       <h1 id="user-greeting">Hi, <span id="user-name">there</span></h1>

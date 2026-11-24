@@ -64,6 +64,8 @@ async function renderDistrictPage() {
     select.value = current.code;
     status.textContent = "Current district: " + current.name;
   } else {
+    // 목록에 없는 예전 값(예: "jongno")은 다른 화면에 남지 않게 지운다
+    if (saved) clearDistrict();
     status.textContent = "Please select your district.";
   }
 }

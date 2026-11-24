@@ -15,17 +15,17 @@
 <body class="has-bottom-nav page-top-lime">
   <main class="container">
 
-    <p><a href="index.html">&larr; Back</a></p>
+    <a class="back-link" href="index.html" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></a>
     <div class="district-bar"><span>District: (selected district)</span><a href="district.html">Change</a></div>
     <h1 id="items-title">Category name</h1>
     <form class="search-form" action="items.html" role="search"><input type="search" name="q" placeholder="Search items" aria-label="Search items"><button class="btn" type="submit">Go</button></form>
-    <p class="section" id="items-count"></p>
+    <div class="list-head section"><p id="items-count"></p><p class="muted">Tap an item to select</p></div>
     <div class="grid grid-4" id="item-grid"></div>
 
     <section class="section" id="items-empty" hidden>
       <div class="state" role="status">
         <p id="items-empty-text"></p>
-        <p><a href="index.html">Browse categories</a></p>
+        <p><a class="text-link" href="index.html">Browse categories</a></p>
       </div>
     </section>
 

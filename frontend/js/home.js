@@ -15,9 +15,25 @@ function createCategoryCard(category) {
   return link;
 }
 
-function renderCategories() {
+async function renderCategories() {
   const grid = document.getElementById("category-grid");
-  MOCK_CATEGORIES.forEach((category) => {
+
+  const note = document.createElement("p");
+  note.className = "muted";
+  note.setAttribute("role", "status");
+  note.textContent = "Loading categories... The server may take a moment to wake up.";
+  grid.after(note);
+
+  let categories;
+  try {
+    categories = await fetchCategories();
+  } catch (e) {
+    note.textContent = e.message;
+    return;
+  }
+
+  note.remove();
+  categories.forEach((category) => {
     grid.appendChild(createCategoryCard(category));
   });
 }

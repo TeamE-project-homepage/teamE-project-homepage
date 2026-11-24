@@ -65,13 +65,17 @@ body.page-top-red {
   background-image: linear-gradient(180deg, rgba(229, 72, 77, 0.28) 0, rgba(229, 72, 77, 0) 300px);
   background-repeat: no-repeat;
 }
+body.page-auth {
+  background-image: linear-gradient(155deg, rgba(160, 202, 104, 0.6) 0, rgba(160, 202, 104, 0) 60%);
+  background-repeat: no-repeat;
+}
 body.page-bottom-lime {
   background-image: radial-gradient(ellipse 70% 140px at 50% 100%, var(--color-lime-glow), rgba(160, 202, 104, 0));
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
 
-/* page frame: main and footer in one centered column */
+/* page frame: content in one centered column */
 .container { max-width: var(--page-max); margin-inline: auto; padding-inline: var(--gutter); }
 main { display: block; padding-block: 38px var(--gap); }
 main > * + * { margin-top: var(--gap); }

@@ -10,31 +10,45 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
 </head>
-<body class="has-bottom-nav">
+<body class="has-bottom-nav page-bottom-lime" data-requires-login>
   <main class="container">
+    <!-- Login only: data-requires-login on <body> tells the JavaScript to send logged-out visitors to login.html.
+         After logging in, login.html goes back here (the login form action is mypage.html). -->
 
-    <h1>My Page</h1>
-    <section class="section">
-      <h2>Saved guides</h2>
-      <ul class="list">
-        <li class="list-item"><span class="grow">Item name</span><button class="btn btn-secondary" type="button">Remove</button></li>
-        <li class="list-item"><span class="grow">Item name</span><button class="btn btn-secondary" type="button">Remove</button></li>
+    <header class="page-head">
+      <h1 id="user-greeting">Hi, <span id="user-name">there</span></h1>
+      <p class="lead" id="user-email">you@email.com</p>
+    </header>
+
+    <section class="panel" aria-labelledby="saved-title">
+      <h2 id="saved-title">Saved (<span id="saved-count">2</span>)</h2>
+      <ul class="saved-list" id="saved-list">
+        <li class="saved-item"><a class="saved-link" href="result.html"><span class="saved-thumb"></span><span class="saved-text"><strong>Item name</strong><span class="muted">Category</span></span></a><button class="icon-btn is-saved" type="button" aria-label="Remove from saved"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg></button></li>
+        <li class="saved-item"><a class="saved-link" href="result.html"><span class="saved-thumb"></span><span class="saved-text"><strong>Item name</strong><span class="muted">Category</span></span></a><button class="icon-btn is-saved" type="button" aria-label="Remove from saved"><svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg></button></li>
       </ul>
-      <div class="state"><p>Empty state: no saved guides</p></div>
+      <div class="empty" id="saved-empty" hidden>
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg>
+        <strong>Nothing saved yet</strong>
+        <p class="muted">Tap "Save guide" to keep it here.</p>
+      </div>
     </section>
-    <section class="section">
-      <h2>Recent searches</h2>
-      <ul class="list">
-        <li class="list-item"><span class="grow">Item name</span><a class="btn btn-secondary" href="result.html">Open</a></li>
+
+    <section class="panel" aria-labelledby="recent-title">
+      <div class="section-head"><h2 id="recent-title">Recent</h2><button class="text-btn" id="clear-recent" type="button">Clear all</button></div>
+      <ul class="recent-list" id="recent-list">
+        <li class="recent-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><a class="grow" href="items.html">Search keyword</a><button class="icon-btn" type="button" aria-label="Remove from recent searches"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></li>
+        <li class="recent-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><a class="grow" href="items.html">Search keyword</a><button class="icon-btn" type="button" aria-label="Remove from recent searches"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></li>
+        <li class="recent-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><a class="grow" href="items.html">Search keyword</a><button class="icon-btn" type="button" aria-label="Remove from recent searches"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></li>
       </ul>
+      <p class="muted" id="recent-empty" hidden>No recent searches</p>
     </section>
-    <p class="section"><a class="btn btn-secondary" href="index.html">Log out</a></p>
+
+    <a class="btn btn-block" href="items.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg> Search items</a>
+    <p class="center"><a class="text-link" href="district.html">Change your district</a></p>
+    <p class="center"><a class="text-link" href="login.html">Log out</a></p>
 
   </main>
 
-  <footer class="site-footer container">
-    <p>Footer: disclaimer text, repository link</p>
-  </footer>
 
   <nav class="bottom-nav" aria-label="Main"><a href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5 12 4l8 6.5V20H4z"/><path d="M10 20v-5h4v5"/></svg><span>Home</span></a><a href="items.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span>Search</span></a><a href="photo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Camera</span></a><a href="mypage.html" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 20c0-3.6 3.4-6 7.5-6s7.5 2.4 7.5 6"/></svg><span>My Page</span></a></nav>
 </body>

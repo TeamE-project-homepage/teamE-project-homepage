@@ -5,19 +5,20 @@ from pathlib import Path
 
 ITEM_PROMPTS_PATH = Path(__file__).with_name("item_prompts.csv")
 
-# Category labels returned by /predict, one per category in docs/data/categories.csv.
-LABELS: tuple[str, ...] = (
-    "plastic",
-    "vinyl",
-    "paper",
-    "glass",
-    "can",
-    "appliance",
-    "furniture",
-    "clothing",
-    "food",
-    "large_waste",
-)
+# Category code in docs/data/categories.csv -> label returned by /predict.
+CATEGORY_LABELS: dict[str, str] = {
+    "PL": "plastic",
+    "VN": "vinyl",
+    "PA": "paper",
+    "GL": "glass",
+    "ME": "can",
+    "AP": "appliance",
+    "FU": "furniture",
+    "CL": "clothing",
+    "FO": "food",
+    "BK": "large_waste",
+}
+LABELS: tuple[str, ...] = tuple(CATEGORY_LABELS.values())
 
 
 @dataclass(frozen=True)
@@ -28,7 +29,7 @@ class ItemPrompt:
 
 
 def load_items(path: Path = ITEM_PROMPTS_PATH) -> list[ItemPrompt]:
-    """Reads item_prompts.csv (a copy of docs/data/items.csv) into one prompt set per item.
+    """Reads item_prompts.csv (generated from docs/data/items.csv) into one prompt set per item.
 
     Each item is described by its clip_prompt plus two sentences built from its name; the
     classifier averages their text embeddings.

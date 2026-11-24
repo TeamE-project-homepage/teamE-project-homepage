@@ -40,7 +40,7 @@ Run it from the `ai/` folder. The service scales to zero when idle, so the first
 
 `label` is one of the 10 category labels in `app/labels.py`. The classifier compares the photo with a prompt set for every item in `app/item_prompts.csv` (the item's `clip_prompt` plus two sentences built from its name), then sums the item probabilities per category; `score` is that sum.
 
-`app/item_prompts.csv` is a copy of `docs/data/items.csv` (item key, category label, name, clip_prompt), because the Docker build only sees `ai/`. Update it when items change; `tests/test_labels.py` fails when the two differ.
+`app/item_prompts.csv` is generated from `docs/data/items.csv` (item key, category label, name, clip_prompt), because the Docker build only sees `ai/`. Do not edit it by hand: after changing `docs/data/items.csv`, run `python ai/scripts/sync_item_prompts.py` and commit both files. `tests/test_labels.py` fails when they differ.
 
 `GET /health` returns `{"status": "UP"}`.
 

@@ -8,21 +8,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from PIL import Image
 
+from app.labels import CATEGORY_LABELS, LABELS
+
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".bmp"}
 THRESHOLDS = [round(0.2 + 0.05 * i, 2) for i in range(13)]
-# category code (docs/data/categories.csv) -> classifier label (app/labels.py)
-CATEGORY_LABELS = {
-    "PL": "plastic",
-    "VN": "vinyl",
-    "PA": "paper",
-    "GL": "glass",
-    "ME": "can",
-    "AP": "appliance",
-    "FU": "furniture",
-    "CL": "clothing",
-    "FO": "food",
-    "BK": "large_waste",
-}
 
 
 def collect(photos: Path) -> list[tuple[str, Path]]:
@@ -56,7 +45,7 @@ def main() -> None:
         sys.exit(f"no images found under {args.photos}")
 
     item_labels = load_item_labels(args.items) if args.items else {}
-    labels = set(CATEGORY_LABELS.values())
+    labels = set(LABELS)
     unknown = sorted({folder for folder, _ in samples if folder not in item_labels and folder not in labels})
     if unknown:
         sys.exit(f"folders are neither labels nor known item keys: {', '.join(unknown)}")

@@ -12,35 +12,38 @@
 </head>
 <body class="has-bottom-nav page-top-lime">
   <main class="container">
+    <!-- Result states: put page-top-lime (recyclable, conditional) or page-top-red (not recyclable) on <body>,
+         and set data-state on #result-status to recyclable, conditional or not-recyclable. -->
 
-    <p><a href="items.html">&larr; Back</a></p>
+    <a class="back-link" href="items.html" aria-label="Back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 6-6 6 6 6"/></svg></a>
     <div class="district-bar"><span>District: (selected district)</span><a href="district.html">Change</a></div>
-    <h1>Item name</h1>
 
     <section class="result-banner" aria-label="Disposal type">
-      <p>Throw it in</p>
-      <h2>Disposal type</h2>
-      <p class="badge">Recyclable / Not recyclable (text label)</p>
+      <p class="result-item" id="result-item">Item name</p>
+      <h1 id="result-type">Disposal type</h1>
+      <p class="result-status" id="result-status" data-state="recyclable"><strong id="result-status-label">Recyclable</strong> <span id="result-status-note">if clean</span></p>
     </section>
-    <p><button class="btn btn-block btn-secondary" type="button">Save guide</button></p>
 
-    <section class="section">
-      <h2>3 Steps</h2>
-      <ol class="steps">
+    <button class="btn btn-block btn-secondary" id="save-guide" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><path d="M7 4h10v16l-5-3.5L7 20z"/></svg>Save guide</button>
+
+    <section class="panel section" aria-labelledby="steps-title">
+      <h2 id="steps-title">3 Steps</h2>
+      <ol class="steps" id="steps-list">
         <li class="step"><div class="step-image"></div><p>Step 1</p></li>
         <li class="step"><div class="step-image"></div><p>Step 2</p></li>
         <li class="step"><div class="step-image"></div><p>Step 3</p></li>
       </ol>
     </section>
 
-    <section class="section">
-      <h2>District information</h2>
-      <div class="info-box">
-        <dl class="info-list"><dt>Day</dt><dd>-</dd><dt>Time</dt><dd>-</dd><dt>Method</dt><dd>-</dd><dt>Source</dt><dd>-</dd></dl>
+    <section class="section" aria-labelledby="rules-title">
+      <h2 id="rules-title">District information</h2>
+      <div class="panel" id="district-rules">
+        <dl class="info-list"><dt>Day</dt><dd id="rule-day">-</dd><dt>Time</dt><dd id="rule-time">-</dd><dt>Method</dt><dd id="rule-method">-</dd><dt>Source</dt><dd id="rule-source">-</dd></dl>
       </div>
+      <div class="notice" id="district-rules-empty" hidden><p>No schedule is available for this district yet. Please check with the district office.</p></div>
     </section>
 
-    <p class="section"><a class="btn btn-block" href="#checklist">Check condition</a></p>
+    <a class="btn btn-block section" id="check-condition" href="#checklist">Check condition</a>
 
   </main>
 
@@ -50,12 +53,14 @@
 
   <div class="modal" id="checklist">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="checklist-title">
-      <div class="cluster" style="justify-content:space-between"><h2 id="checklist-title">Check condition</h2><a href="result.html" aria-label="Close">Close</a></div>
-      <p>Recyclable only if all are checked</p>
-      <label class="check-item"><input type="checkbox"> Checklist item</label>
-      <label class="check-item"><input type="checkbox"> Checklist item</label>
-      <label class="check-item"><input type="checkbox"> Checklist item</label>
-      <div class="cluster"><a class="btn btn-secondary" href="result.html">Not sure</a><a class="btn" href="result.html">Confirm</a></div>
+      <div class="modal-head"><h2 id="checklist-title">Check condition</h2><a class="modal-close" href="result.html" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></a></div>
+      <p class="muted" id="checklist-hint">Recyclable only if all are checked</p>
+      <div class="check-list" id="checklist-items">
+        <label class="check-item"><input type="checkbox"> Checklist item</label>
+        <label class="check-item"><input type="checkbox"> Checklist item</label>
+        <label class="check-item"><input type="checkbox"> Checklist item</label>
+      </div>
+      <div class="modal-actions"><a class="btn btn-secondary" href="result.html">Not sure</a><a class="btn" href="result.html">Confirm</a></div>
     </div>
   </div>
 

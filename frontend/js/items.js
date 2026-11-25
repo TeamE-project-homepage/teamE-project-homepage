@@ -11,6 +11,22 @@ function getParams() {
   };
 }
 
+// 카테고리 안에서 검색, 서버 검색은 카테고리를 구분하지 못해 전체에서 찾은 뒤 거른다
+// 결과가 최대 개수에 닿았다면 뒤쪽 결과가 잘릴 수 있으니 그 카테고리 품목에서 이름으로도 찾아 합친다
+async function searchInCategory(q, category) {
+  const found = await searchItems(q);
+  const inCategory = found.filter((item) => String(item.category) === category);
+  if (found.length < SEARCH_LIMIT) return inCategory;
+
+  const keyword = normalize(q);
+  const categoryItems = await fetchItems(category);
+  const known = new Set(inCategory.map((item) => item.id));
+  const byName = categoryItems.filter(
+    (item) => !known.has(item.id) && normalize(item.name).includes(keyword)
+  );
+  return inCategory.concat(byName);
+}
+
 function createCard(item) {
   const link = document.createElement("a");
   link.className = "card";
@@ -71,7 +87,11 @@ async function renderItemsPage() {
   try {
     [categories, items] = await Promise.all([
       category ? fetchCategories() : Promise.resolve([]),
-      keyword ? searchItems(q) : fetchItems(category),
+      keyword
+        ? category
+          ? searchInCategory(q, category)
+          : searchItems(q)
+        : fetchItems(category),
     ]);
   } catch (e) {
     count.textContent = "";
@@ -105,10 +125,7 @@ async function renderItemsPage() {
     document.querySelector(".search-form").appendChild(hidden);
   }
 
-  // 검색은 전체 품목에서 하므로, 카테고리 안에서 검색한 경우 그 카테고리 품목만 남깁니다.
-  const shown = category && keyword
-    ? items.filter((item) => String(item.category) === category)
-    : items;
+  const shown = items;
   count.textContent = shown.length + (shown.length === 1 ? " item" : " items");
 
   if (shown.length === 0) {

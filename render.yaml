@@ -1,13 +1,12 @@
 services:
   - type: web
     name: bingo-backend
-    runtime: docker
+    runtime: image
     plan: free
-    branch: develop
-    rootDir: backend
-    dockerfilePath: ./Dockerfile
+    # GitHub Actions builds and pushes this image, then triggers the deploy hook.
+    image:
+      url: ghcr.io/teame-project-homepage/bingo-backend:latest
     healthCheckPath: /health
-    autoDeploy: true
     envVars:
       - key: SPRING_PROFILES_ACTIVE
         value: prod

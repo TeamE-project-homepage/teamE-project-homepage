@@ -19,6 +19,7 @@ public enum ErrorCode {
     // Domain codes go below the common ones: from() returns the first match for a status.
     CATEGORY_NOT_FOUND(HttpStatus.NOT_FOUND, "CATEGORY_404", "Category not found."),
     ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "ITEM_404", "Item not found."),
+    DISTRICT_NOT_FOUND(HttpStatus.NOT_FOUND, "DISTRICT_404", "District not found."),
     SEARCH_HISTORY_NOT_FOUND(HttpStatus.NOT_FOUND, "HISTORY_404", "Search history not found."),
     SEARCH_QUERY_REQUIRED(HttpStatus.BAD_REQUEST, "SEARCH_400", "Please enter a search term.");
 

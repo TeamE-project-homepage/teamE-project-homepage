@@ -57,3 +57,20 @@ async function fetchItems(categoryId) {
   const items = await apiGet(path);
   return items.map((i) => ({ id: i.itemId, name: i.name, category: i.categoryId }));
 }
+
+// 서버 검색이 한 번에 돌려줄 수 있는 최대 개수
+const SEARCH_LIMIT = 50;
+
+// 영어 이름이나 별칭으로 품목을 검색. 서버가 오타와 비슷한 이름도 찾는다.
+// matchedKeyword는 어떤 별칭 때문에 검색됐는지 알려준다.(이름으로 찾았으면 빈 문자열)
+async function searchItems(q) {
+  const result = await apiGet(
+    "/api/items/search?q=" + encodeURIComponent(q.trim()) + "&limit=" + SEARCH_LIMIT
+  );
+  return result.items.map((i) => ({
+    id: i.itemId,
+    name: i.name,
+    category: i.categoryId,
+    matchedKeyword: i.matchedKeyword || "",
+  }));
+}

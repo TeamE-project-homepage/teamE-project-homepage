@@ -8,6 +8,10 @@ async function renderResultPage() {
   const itemName = document.getElementById("result-item");
   const type = document.getElementById("result-type");
   const status = document.getElementById("result-status");
+  const checkCondition = document.getElementById("check-condition");
+
+  // 체크리스트 API가 아직 없어서, 연결되기 전까지는 진입 버튼을 숨긴다
+  checkCondition.hidden = true;
 
   // 품목을 못 불러왔을 때 배너에 안내를 보여주고, 거짓 상태(Recyclable 등)는 숨긴다
   function showProblem(title, message) {

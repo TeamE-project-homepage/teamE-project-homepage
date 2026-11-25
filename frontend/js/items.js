@@ -11,14 +11,11 @@ function getParams() {
   };
 }
 
-function findItems(q, categoryId) {
+// 검색어가 있으면 이름에 포함된 품목만 남긴다(서버 검색으로 바꾸는 건 다음 PR)
+function filterByKeyword(items, q) {
   const keyword = normalize(q);
-  return MOCK_ITEMS.filter((item) => {
-    if (categoryId && item.category !== categoryId) return false;
-    if (!keyword) return true;
-    const names = [item.name, ...item.aliases].map(normalize);
-    return names.some((name) => name.includes(keyword));
-  });
+  if (!keyword) return items;
+  return items.filter((item) => normalize(item.name).includes(keyword));
 }
 
 function createCard(item) {
@@ -38,7 +35,7 @@ function createCard(item) {
   return link;
 }
 
-function renderItemsPage() {
+async function renderItemsPage() {
   const { hasQ, q, category } = getParams();
   const title = document.getElementById("items-title");
   const count = document.getElementById("items-count");
@@ -49,49 +46,77 @@ function renderItemsPage() {
 
   input.value = q;
   grid.replaceChildren();
+  empty.hidden = true;
 
-  function showEmpty(message) {
+  // state: "empty" = 결과 없음, "error" = 서버 연결·응답 문제
+  function showEmpty(message, state) {
+    empty.dataset.state = state;
     emptyText.textContent = message;
     empty.hidden = false;
   }
 
-  const categoryInfo = MOCK_CATEGORIES.find((c) => c.id === category);
   const keyword = normalize(q);
-  if (categoryInfo) {
-    const form = document.querySelector(".search-form");
+
+  if (hasQ && !keyword && !category) {
+    title.textContent = "Search";
+    count.textContent = "";
+    showEmpty("Please enter a search keyword.", "empty");
+    return;
+  }
+
+  title.textContent = category
+    ? "Loading..."
+    : keyword
+      ? 'Results for "' + q.trim() + '"'
+      : hasQ
+        ? "Search"
+        : "All items";
+  count.textContent = "";
+
+  let categories = [];
+  let items;
+  try {
+    [categories, items] = await Promise.all([
+      category ? fetchCategories() : Promise.resolve([]),
+      fetchItems(category),
+    ]);
+  } catch (e) {
+    if (category && (e.code === "CATEGORY_404" || e.code === "COMMON_400")) {
+      title.textContent = "Category not found";
+      showEmpty("We could not find that category.", "empty");
+    } else {
+      title.textContent = category ? "Items" : title.textContent;
+      showEmpty(e.message, "error");
+    }
+    return;
+  }
+
+  if (category) {
+    const categoryInfo = categories.find((c) => String(c.id) === category);
+    if (!categoryInfo) {
+      title.textContent = "Category not found";
+      showEmpty("We could not find that category.", "empty");
+      return;
+    }
+    title.textContent = categoryInfo.name;
+
+    // 카테고리 안에서 검색할 수 있게 카테고리를 검색 폼에 넘긴다
     const hidden = document.createElement("input");
     hidden.type = "hidden";
     hidden.name = "category";
-    hidden.value = categoryInfo.id;
-    form.appendChild(hidden);
-  }
-  
-  if (categoryInfo) {
-    title.textContent = categoryInfo.name;
-  } else if (keyword) {
-    title.textContent = 'Results for "' + q.trim() + '"';
-  } else if (hasQ) {
-    title.textContent = "Search";
-  } else {
-    title.textContent = "All items";
+    hidden.value = category;
+    document.querySelector(".search-form").appendChild(hidden);
   }
 
-  if (hasQ && !keyword && !categoryInfo) {
-    count.textContent = "";
-    showEmpty("Please enter a search keyword.");
+  const shown = filterByKeyword(items, q);
+  count.textContent = shown.length + (shown.length === 1 ? " item" : " items");
+
+  if (shown.length === 0) {
+    showEmpty("No items found. Try another keyword.", "empty");
     return;
   }
 
-  const items = findItems(q, category);
-  count.textContent = items.length + (items.length === 1 ? " item" : " items");
-
-  if (items.length === 0) {
-    showEmpty("No items found. Try another keyword.");
-    return;
-  }
-
-  empty.hidden = true;
-  items.forEach((item) => grid.appendChild(createCard(item)));
+  shown.forEach((item) => grid.appendChild(createCard(item)));
 }
 
 renderItemsPage();

@@ -14,6 +14,9 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     @EntityGraph(attributePaths = "category")
     Optional<Item> findWithCategoryById(Long id);
 
+    @EntityGraph(attributePaths = "category")
+    Optional<Item> findWithCategoryByItemKey(String itemKey);
+
     @Query("select i from Item i join fetch i.category c order by c.sortOrder, c.id, lower(i.name), i.id")
     List<Item> findAllOrderByCategoryAndName();
 

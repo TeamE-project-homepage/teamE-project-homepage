@@ -1,33 +1,7 @@
-const DISTRICTS = [
-  { code: "jongno", name: "Jongno-gu" },
-  { code: "jung", name: "Jung-gu" },
-  { code: "yongsan", name: "Yongsan-gu" },
-  { code: "seongdong", name: "Seongdong-gu" },
-  { code: "gwangjin", name: "Gwangjin-gu" },
-  { code: "dongdaemun", name: "Dongdaemun-gu" },
-  { code: "jungnang", name: "Jungnang-gu" },
-  { code: "seongbuk", name: "Seongbuk-gu" },
-  { code: "gangbuk", name: "Gangbuk-gu" },
-  { code: "dobong", name: "Dobong-gu" },
-  { code: "nowon", name: "Nowon-gu" },
-  { code: "eunpyeong", name: "Eunpyeong-gu" },
-  { code: "seodaemun", name: "Seodaemun-gu" },
-  { code: "mapo", name: "Mapo-gu" },
-  { code: "yangcheon", name: "Yangcheon-gu" },
-  { code: "gangseo", name: "Gangseo-gu" },
-  { code: "guro", name: "Guro-gu" },
-  { code: "geumcheon", name: "Geumcheon-gu" },
-  { code: "yeongdeungpo", name: "Yeongdeungpo-gu" },
-  { code: "dongjak", name: "Dongjak-gu" },
-  { code: "gwanak", name: "Gwanak-gu" },
-  { code: "seocho", name: "Seocho-gu" },
-  { code: "gangnam", name: "Gangnam-gu" },
-  { code: "songpa", name: "Songpa-gu" },
-  { code: "gangdong", name: "Gangdong-gu" },
-];
+let districts = [];
 
 function chooseDistrict(code) {
-  const district = DISTRICTS.find((d) => d.code === code);
+  const district = districts.find((d) => d.code === code);
   if (!district) return;
 
   if (!saveDistrict(district)) {
@@ -39,13 +13,8 @@ function chooseDistrict(code) {
   window.location.href = "index.html";
 }
 
-function renderDistrictPage() {
-  const select = document.getElementById("district");
-  const list = document.getElementById("district-list");
-  const status = document.getElementById("district-status");
-  const current = loadDistrict();
-
-  DISTRICTS.forEach((d) => {
+function renderDistrictList(select, list) {
+  districts.forEach((d) => {
     const option = document.createElement("option");
     option.value = d.code;
     option.textContent = d.name;
@@ -53,7 +22,7 @@ function renderDistrictPage() {
   });
   select.addEventListener("change", () => chooseDistrict(select.value));
 
-  DISTRICTS.forEach((d) => {
+  districts.forEach((d) => {
     const item = document.createElement("li");
     item.className = "list-item";
 
@@ -70,11 +39,33 @@ function renderDistrictPage() {
     item.append(name, button);
     list.appendChild(item);
   });
+}
 
+async function renderDistrictPage() {
+  const select = document.getElementById("district");
+  const list = document.getElementById("district-list");
+  const status = document.getElementById("district-status");
+
+  status.textContent = "Loading districts... The server may take a moment to wake up.";
+
+  try {
+    districts = await fetchDistricts();
+  } catch (e) {
+    status.textContent = e.message;
+    return;
+  }
+
+  renderDistrictList(select, list);
+
+  // 예전 가짜 코드(예: "jongno")가 저장돼 있으면 목록에 없으므로 선택 안 됨
+  const saved = loadDistrict();
+  const current = saved && districts.find((d) => d.code === saved.code);
   if (current) {
     select.value = current.code;
     status.textContent = "Current district: " + current.name;
   } else {
+    // 목록에 없는 예전 값(예: "jongno")은 다른 화면에 남지 않게 지운다
+    if (saved) clearDistrict();
     status.textContent = "Please select your district.";
   }
 }

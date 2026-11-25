@@ -80,7 +80,7 @@ public class DistrictRuleService {
     }
 
     private boolean isComplete(DistrictRule rule, List<DistrictRuleAreaResponse> areas) {
-        if (!StringUtils.hasText(rule.getMethod()) || !StringUtils.hasText(rule.getLocalNotes())
+        if (!StringUtils.hasText(rule.getMethod())
                 || !StringUtils.hasText(rule.getSourceName()) || !StringUtils.hasText(rule.getSourceUrl())
                 || rule.getVerifiedAt() == null) {
             return false;

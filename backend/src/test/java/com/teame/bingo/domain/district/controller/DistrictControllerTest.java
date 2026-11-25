@@ -118,6 +118,22 @@ class DistrictControllerTest {
                 .andExpect(jsonPath("$.data.areas[0].dongs").isEmpty());
     }
 
+    @Test
+    void availableRuleOmitsOptionalLocalNotesWhenNoExceptionGuidanceExists() throws Exception {
+        given(districtRuleService.getDistrictRule(14L, 1L)).willReturn(new DistrictRuleResponse(
+                14L, "Mapo-gu", 1L, DistrictRuleStatus.AVAILABLE, AreaScope.DISTRICT,
+                "Transparent bag", "Mon, Thu", "18:00~24:00", null,
+                "Mapo-gu Office", "https://example.com/rules", LocalDate.of(2026, 10, 30), List.of()));
+
+        mockMvc.perform(get("/api/districts/14/rules").param("disposalTypeId", "1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data.status").value("AVAILABLE"))
+                .andExpect(jsonPath("$.data.localNotes").doesNotExist())
+                .andExpect(jsonPath("$.data.method").value("Transparent bag"))
+                .andExpect(jsonPath("$.data.day").value("Mon, Thu"))
+                .andExpect(jsonPath("$.data.time").value("18:00~24:00"));
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {"NO_INFO", "UNSUPPORTED"})
     void emptyStatusesContainOnlyIdentityStatusAndEmptyAreas(String status) throws Exception {

@@ -5,9 +5,12 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
@@ -187,14 +190,35 @@ class DistrictRuleServiceTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"method", "localNotes", "sourceName", "sourceUrl", "verifiedAt", "day", "time"})
+    @MethodSource("scopesWithoutExceptionNotes")
+    void completeRulesWithoutLocalNotesRemainAvailable(AreaScope scope, String localNotes) {
+        District district = district("11440", "Mapo-gu");
+        DisposalType type = type("RECYCLABLE");
+        DistrictRule rule = tem.persist(rule(district, type, scope).localNotes(localNotes).build());
+        if (scope == AreaScope.DONG) {
+            dong(area(rule, 1, "Mon, Thu", null), "Gongdeok-dong", "공덕동");
+        }
+        flushAndClear();
+
+        DistrictRuleResponse result = districtRuleService.getDistrictRule(district.getId(), type.getId());
+
+        assertThat(result.status()).isEqualTo(DistrictRuleStatus.AVAILABLE);
+        assertThat(result.localNotes()).isNull();
+    }
+
+    static Stream<Arguments> scopesWithoutExceptionNotes() {
+        return Stream.of(AreaScope.values()).flatMap(scope ->
+                Stream.<String>of(null, "", " \t ").map(notes -> Arguments.of(scope, notes)));
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"method", "sourceName", "sourceUrl", "verifiedAt", "day", "time"})
     void missingApplicableFieldProducesPartial(String missingField) {
         District district = district("11440", "Mapo-gu");
         DisposalType type = type("RECYCLABLE");
         DistrictRule.DistrictRuleBuilder builder = rule(district, type, AreaScope.DISTRICT);
         switch (missingField) {
             case "method" -> builder.method(null);
-            case "localNotes" -> builder.localNotes(null);
             case "sourceName" -> builder.sourceName(null);
             case "sourceUrl" -> builder.sourceUrl(null);
             case "verifiedAt" -> builder.verifiedAt(null);

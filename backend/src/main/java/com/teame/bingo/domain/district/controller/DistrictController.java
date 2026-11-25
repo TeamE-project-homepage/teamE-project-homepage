@@ -35,7 +35,8 @@ public class DistrictController {
     @Operation(
             summary = "Get district disposal rules for a disposal type",
             description = "Public endpoint. Existing disposal types without a rule return NO_INFO. "
-                    + "AVAILABLE requires method, localNotes, sourceName, sourceUrl, verifiedAt and scope-specific schedules. "
+                    + "AVAILABLE requires method, sourceName, sourceUrl, verifiedAt and scope-specific schedules. "
+                    + "localNotes is optional exception guidance and does not affect completeness. "
                     + "DISTRICT requires day and time; DONG requires nonempty areas with days, effective times and dongs; "
                     + "ADDRESS requires time and uses sourceUrl for address lookup. "
                     + "Missing applicable fields return PARTIAL. All five current disposal types are supported; "

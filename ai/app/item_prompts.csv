@@ -1,0 +1,89 @@
+item_key,label,name,clip_prompt
+pet_bottle_clear,plastic,Clear PET Bottle,a photo of a clear plastic water bottle
+pet_bottle_colored,plastic,Colored PET Bottle,a photo of a green or brown colored plastic bottle
+plastic_food_container,plastic,Plastic Food Container,a photo of an empty plastic takeout food container
+shampoo_bottle,plastic,Shampoo Bottle,a photo of a plastic shampoo bottle with a pump
+styrofoam_box,plastic,Styrofoam Box,a photo of a white styrofoam box
+toothbrush,plastic,Toothbrush,a photo of a used plastic toothbrush
+yogurt_cup,plastic,Yogurt Cup,a photo of an empty plastic yogurt cup
+bottle_cap,plastic,Plastic Bottle Cap,a photo of plastic bottle caps
+cup_noodle_container,plastic,Instant Noodle Cup,a photo of an empty instant noodle cup
+plastic_straw,plastic,Plastic Straw,a photo of plastic drinking straws
+ballpoint_pen,plastic,Ballpoint Pen,a photo of a plastic ballpoint pen
+plastic_toy,plastic,Plastic Toy,a photo of a small plastic toy
+plastic_bag,vinyl,Plastic Bag,a photo of a crumpled plastic shopping bag
+snack_bag,vinyl,Snack Bag,a photo of an empty potato chip bag
+bubble_wrap,vinyl,Bubble Wrap,a photo of plastic bubble wrap
+zipper_bag,vinyl,Zipper Bag,a photo of a clear plastic zipper storage bag
+cling_wrap,vinyl,Cling Wrap,a photo of used plastic cling wrap
+rubber_gloves,vinyl,Rubber Gloves,a photo of yellow rubber kitchen gloves
+disposable_plastic_gloves,vinyl,Disposable Plastic Gloves,a photo of thin clear disposable plastic gloves
+poly_mailer,vinyl,Plastic Delivery Mailer,a photo of a plastic courier mailer bag
+cardboard_box,paper,Cardboard Box,a photo of a flattened cardboard box
+pizza_box,paper,Pizza Box,a photo of an empty pizza box with grease stains
+paper_cup,paper,Paper Cup,a photo of an empty disposable paper coffee cup
+milk_carton,paper,Milk Carton,a photo of an empty flattened milk carton
+receipt,paper,Receipt,a photo of a crumpled store receipt
+newspaper,paper,Newspaper,a photo of a stack of folded newspapers
+spiral_notebook,paper,Spiral Notebook,a photo of a spiral-bound notebook
+tissue_paper,paper,Used Tissue / Paper Towel,a photo of used crumpled tissues
+coated_paper,paper,Coated Paper / Glossy Flyer,a photo of a glossy laminated advertising flyer
+paper_bag,paper,Paper Shopping Bag,a photo of a brown paper shopping bag
+glass_bottle,glass,Glass Bottle,a photo of an empty glass wine bottle
+glass_jar,glass,Glass Jar,a photo of an empty glass jam jar with lid removed
+broken_glass,glass,Broken Glass,a photo of broken glass shards on a floor
+soju_beer_bottle,glass,Soju / Beer Bottle (Deposit),a photo of an empty green soju bottle
+mirror,glass,Mirror,a photo of a small handheld mirror
+ceramic_mug,glass,Ceramic Mug / Dish,a photo of a white ceramic coffee mug
+heat_resistant_glass,glass,Heat-Resistant Glassware,a photo of a clear glass oven baking dish
+aluminum_can,can,Aluminium Drink Can,a photo of an empty crushed aluminum soda can
+tin_can,can,Tin Can (Food Can),a photo of an empty opened tin food can
+butane_gas_canister,can,Butane Gas Canister,a photo of a portable butane gas canister
+aerosol_can,can,Aerosol Spray Can,a photo of an aerosol spray can
+aluminum_foil,can,Aluminium Foil,a photo of a crumpled sheet of used aluminum foil
+metal_bottle_cap,can,Metal Bottle Cap,a photo of metal beer bottle caps
+frying_pan,can,Frying Pan / Pot,a photo of an old metal frying pan
+refrigerator,appliance,Refrigerator,a photo of a household refrigerator
+washing_machine,appliance,Washing Machine,a photo of a household washing machine
+air_conditioner,appliance,Air Conditioner,a photo of an air conditioner with an outdoor unit
+television,appliance,Television,a photo of a flat screen television
+microwave,appliance,Microwave Oven,a photo of a countertop microwave oven
+rice_cooker,appliance,Electric Rice Cooker,a photo of an electric rice cooker
+electric_kettle,appliance,Electric Kettle,a photo of an electric kettle
+vacuum_cleaner,appliance,Vacuum Cleaner,a photo of a household vacuum cleaner
+electric_fan,appliance,Electric Fan,a photo of an electric pedestal fan
+hair_dryer,appliance,Hair Dryer,a photo of a handheld hair dryer
+desk,furniture,Desk,a photo of a wooden study desk
+dining_table,furniture,Dining Table,a photo of a household dining table
+chair,furniture,Chair,a photo of an office chair
+sofa,furniture,Sofa,a photo of a household sofa
+wardrobe,furniture,Wardrobe,a photo of a wooden wardrobe cabinet
+bookshelf,furniture,Bookshelf,a photo of a wooden bookshelf
+bed_frame,furniture,Bed Frame,a photo of a bed frame without a mattress
+mattress,furniture,Mattress,a photo of a household mattress
+reusable_clothes,clothing,Reusable Clothes,a photo of clean folded used clothing
+damaged_clothes,clothing,Damaged Clothes,a photo of torn and stained used clothing
+shoes,clothing,Reusable Shoes,a photo of a pair of used sneakers
+handbag,clothing,Reusable Bag,a photo of a used fabric backpack
+curtains,clothing,Fabric Curtains,a photo of fabric window curtains
+pillow,clothing,Pillow,a photo of a used bed pillow
+leftover_rice,food,Leftover Rice,a photo of leftover cooked rice
+vegetable_scraps,food,Soft Vegetable Scraps,a photo of chopped cabbage and vegetable scraps
+banana_peel,food,Banana Peel,a photo of a banana peel
+citrus_peel,food,Citrus Peel,a photo of orange and tangerine peels
+watermelon_rind,food,Watermelon Rind,a photo of chopped watermelon rind
+animal_bones,food,Meat Bones,a photo of discarded chicken bones
+fish_bones,food,Fish Bones,a photo of discarded fish bones
+shellfish_shells,food,Shellfish and Crab Shells,a photo of empty clam and crab shells
+eggshells,food,Eggshells,a photo of broken eggshells
+coffee_grounds,food,Coffee Grounds,a photo of used coffee grounds
+onion_skin,food,Onion Skin,a photo of dry onion skins
+fruit_pits,food,Hard Fruit Pits,a photo of peach and apricot pits
+tea_bag,food,Used Tea Bag,a photo of a used tea bag
+nut_shells,food,Hard Nut Shells,a photo of hard walnut and chestnut shells
+cotton_quilt,large_waste,Padded Quilt,a photo of a thick padded quilt
+suitcase,large_waste,Wheeled Suitcase,a photo of a wheeled travel suitcase
+bicycle,large_waste,Bicycle,a photo of a regular pedal bicycle
+stroller,large_waste,Stroller,a photo of a baby stroller
+carpet,large_waste,Large Carpet,a photo of a rolled large floor carpet
+large_stuffed_toy,large_waste,Large Stuffed Toy,a photo of a large stuffed teddy bear

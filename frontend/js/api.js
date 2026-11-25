@@ -74,3 +74,15 @@ async function searchItems(q) {
     matchedKeyword: i.matchedKeyword || "",
   }));
 }
+
+// 서버의 품목 1개를 화면이 쓰는 모양으로 바꾼다. disposalTypeId는 배출 유형 번호
+async function fetchItem(itemId) {
+  const item = await apiGet("/api/items/" + encodeURIComponent(itemId));
+  return {
+    id: item.itemId,
+    name: item.name,
+    category: item.categoryId,
+    categoryName: item.categoryName,
+    disposalTypeId: item.disposalTypeId,
+  };
+}

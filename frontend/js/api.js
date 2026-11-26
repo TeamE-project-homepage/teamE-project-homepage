@@ -97,3 +97,48 @@ async function fetchDistrictRule(districtId, disposalTypeId) {
       encodeURIComponent(disposalTypeId)
   );
 }
+
+// 사진 1장을 서버에 보내 품목 후보를 받는다. 서버는 JPEG/PNG만, 10 MiB까지 받는다
+// matched가 false이면 에러가 아니라 "후보 없음"이고 이때 candidates는 빈 배열이다
+async function recognizePhoto(file) {
+  const formData = new FormData();
+  formData.append("file", file);
+
+  let response;
+  try {
+    // Content-Type은 직접 쓰지 않는다. 브라우저가 multipart 경계값까지 알아서 붙여 준다
+    response = await fetch(API_BASE_URL + "/api/recognitions", {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: formData,
+    });
+  } catch (e) {
+    throw new ApiError("NETWORK", "Could not reach the server. Please try again.");
+  }
+
+  let body = null;
+  try {
+    body = await response.json();
+  } catch (e) {
+    body = null;
+  }
+
+  if (!response.ok || !body || body.success === false) {
+    const error = body && body.error;
+    throw new ApiError(
+      error ? error.code : "HTTP_" + response.status,
+      error ? error.message : "Something went wrong. Please try again."
+    );
+  }
+
+  const data = body.data;
+  return {
+    matched: data.matched === true,
+    candidates: (data.candidates || []).map((item) => ({
+      id: item.itemId,
+      name: item.name,
+      category: item.categoryId,
+      categoryName: item.categoryName,
+    })),
+  };
+}

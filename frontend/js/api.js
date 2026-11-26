@@ -39,7 +39,7 @@ async function apiGet(path) {
 // 서버의 { code, nameEn }을 화면이 쓰는 { code, name } 모양으로 바꾼다
 async function fetchDistricts() {
   const districts = await apiGet("/api/districts");
-  return districts.map((d) => ({ code: d.code, name: d.nameEn }));
+  return districts.map((d) => ({ id: d.districtId, code: d.code, name: d.nameEn }));
 }
 
 // 서버의 { categoryId, name }을 화면이 쓰는 { id, name }으로 바꾼다
@@ -85,4 +85,15 @@ async function fetchItem(itemId) {
     categoryName: item.categoryName,
     disposalTypeId: item.disposalTypeId,
   };
+}
+
+// 자치구와 배출 유형에 맞는 배출 규칙을 가져온다
+// status는 AVAILABLE, PARTIAL, NO_INFO, UNSUPPORTED 중 하나이고, areaScope는 DISTRICT, DONG, ADDRESS 중 하나
+async function fetchDistrictRule(districtId, disposalTypeId) {
+  return apiGet(
+    "/api/districts/" +
+      encodeURIComponent(districtId) +
+      "/rules?disposalTypeId=" +
+      encodeURIComponent(disposalTypeId)
+  );
 }

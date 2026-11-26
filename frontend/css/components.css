@@ -250,3 +250,9 @@
 .empty svg { width: 3rem; height: 3rem; margin-bottom: 0.75rem; color: var(--color-ink); }
 .empty strong { font-size: 1.125rem; }
 .empty .muted { font-size: 0.875rem; }
+
+
+/* 사진 후보 카드: 버튼이어도 링크 카드와 같은 모양으로 보이게 하고, 선택된 카드를 표시한다 */
+button.card { font: inherit; color: inherit; background: transparent; text-align: left; cursor: pointer; }
+button.card[aria-pressed="true"] { outline: 3px solid currentColor; outline-offset: -3px; }
+.btn[aria-disabled="true"] { opacity: 0.5; pointer-events: none; }

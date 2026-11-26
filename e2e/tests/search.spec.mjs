@@ -13,11 +13,12 @@ test("search from home, open an item and see its name on the result page", async
   await expect(items.first()).toBeVisible();
   expect(await findOverflow(page), "overflow on the search results").toEqual([]);
 
+  // 결과 화면이 누른 품목을 보여주는지 비교하려고 카드의 품목명을 저장해 둔다
+  const cardName = (await items.first().locator(".card-title").textContent()).trim();
   await items.first().click();
 
   await expect(page).toHaveURL(/result\.html\?item=\d+/);
-  const itemName = page.locator("#result-item");
-  await expect(itemName).not.toHaveText(/^(Item name|Loading\.\.\.|Item not found|Could not load the item)$/);
+  await expect(page.locator("#result-item")).toHaveText(cardName);
   expect(await findOverflow(page), "overflow on the result page").toEqual([]);
 
   expect(errors, "errors during the flow").toEqual([]);

@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
+  <script defer src="js/api.js"></script>
   <script defer src="js/photo.js"></script>
 </head>
 <body class="has-bottom-nav page-bottom-lime">
@@ -25,7 +26,7 @@
     <div class="stack">
       <button class="btn btn-block" type="button" id="analyse-button" disabled>Analyse</button>
       <label class="btn btn-block btn-secondary" for="photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.5"/><path d="m20 16-4.5-4.5L8 19"/></svg> Upload Photo</label>
-      <input id="photo" class="visually-hidden" type="file" accept="image/*">
+      <input id="photo" class="visually-hidden" type="file" accept="image/jpeg,image/png">
     </div>
 
     <div class="state state-center" id="photo-loading" role="status" hidden><span class="spinner" aria-hidden="true"></span><p>We are analyzing your photo...</p></div>

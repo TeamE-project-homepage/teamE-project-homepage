@@ -138,6 +138,9 @@
 .info-list dt { color: var(--color-gray-500); }
 .info-list dd { font-weight: 600; }
 
+/* extra notes and the verified date that result.js adds under the district rules */
+.rule-extra { margin-top: 0.75rem; }
+
 /* long text without spaces (such as a source URL) wraps inside its box instead of widening the page */
 .info-list dd, .notice, .rule-extra, .step p, .check-item, .rule-list .grow { min-width: 0; overflow-wrap: anywhere; }
 

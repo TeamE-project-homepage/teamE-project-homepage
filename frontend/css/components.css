@@ -20,6 +20,25 @@
 .bottom-nav svg { width: 1.625rem; height: 1.625rem; }
 .bottom-nav a[aria-current="page"] { font-weight: 700; color: var(--color-ink); }
 
+/* desktop (1024px and up): the same nav becomes a horizontal bar fixed at the top.
+   Markup, class names and aria-current stay the same, so no JS change is needed. */
+@media (min-width: 1024px) {
+  :root { --nav-height: 4.25rem; }
+  .bottom-nav {
+    top: 0; bottom: auto; left: 0; transform: none;
+    width: 100%; max-width: none; justify-content: flex-end; gap: 0.5rem;
+    padding: 0.625rem max(var(--gutter), calc((100% - var(--page-max)) / 2 + var(--gutter)));
+    border-radius: 0; box-shadow: 0 4px 20px rgba(17, 17, 17, 0.04);
+  }
+  .bottom-nav a {
+    flex: none; flex-direction: row; gap: 0.5rem; max-width: none;
+    padding: 0.5rem 1rem; border-radius: 999px; font-size: 0.9375rem;
+  }
+  .bottom-nav a:hover { background: var(--color-gray-50); }
+  .bottom-nav a[aria-current="page"] { background: var(--color-lime-100); }
+  .bottom-nav svg { width: 1.375rem; height: 1.375rem; }
+}
+
 /* button: .btn (primary, black), .btn-secondary (white) */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;

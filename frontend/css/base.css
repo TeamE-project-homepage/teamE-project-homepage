@@ -92,8 +92,10 @@ main > * + * { margin-top: var(--gap); }
 @media (min-width: 640px) { .grid { gap: 0.875rem; grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (min-width: 860px) { .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-/* leave room for the fixed bottom tab bar */
+/* leave room for the fixed tab bar (bottom on phones and tablets) */
 body.has-bottom-nav { padding-bottom: calc(var(--nav-height) + 1.5rem); }
+/* desktop: the nav moves to the top, so the room is needed above instead of below */
+@media (min-width: 1024px) { body.has-bottom-nav { padding-top: var(--nav-height); padding-bottom: 0; } }
 
 [hidden] { display: none !important; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

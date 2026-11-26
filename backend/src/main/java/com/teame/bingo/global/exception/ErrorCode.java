@@ -21,7 +21,12 @@ public enum ErrorCode {
     ITEM_NOT_FOUND(HttpStatus.NOT_FOUND, "ITEM_404", "Item not found."),
     DISTRICT_NOT_FOUND(HttpStatus.NOT_FOUND, "DISTRICT_404", "District not found."),
     SEARCH_HISTORY_NOT_FOUND(HttpStatus.NOT_FOUND, "HISTORY_404", "Search history not found."),
-    SEARCH_QUERY_REQUIRED(HttpStatus.BAD_REQUEST, "SEARCH_400", "Please enter a search term.");
+    SEARCH_QUERY_REQUIRED(HttpStatus.BAD_REQUEST, "SEARCH_400", "Please enter a search term."),
+    RECOGNITION_PHOTO_REQUIRED(HttpStatus.BAD_REQUEST, "RECOGNITION_400", "Please select a photo to upload."),
+    RECOGNITION_UNREADABLE_IMAGE(HttpStatus.UNPROCESSABLE_ENTITY, "RECOGNITION_422",
+            "We could not read this image. Please try another photo."),
+    RECOGNITION_UNAVAILABLE(HttpStatus.SERVICE_UNAVAILABLE, "RECOGNITION_503",
+            "Photo recognition is temporarily unavailable. Please search by name instead.");
 
     private final HttpStatus status;
     private final String code;

@@ -3,6 +3,12 @@ spring:
     name: bingo
   profiles:
     active: ${SPRING_PROFILES_ACTIVE:local}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+      # Accepted photos stay in memory instead of being spooled to a temporary file.
+      file-size-threshold: 11MB
   security:
     oauth2:
       resourceserver:
@@ -22,9 +28,16 @@ spring:
 
 server:
   port: ${PORT:8080}
+  tomcat:
+    # Drain rejected uploads within the request limit so clients can receive the 413 response.
+    max-swallow-size: 11MB
 
 app:
   cors:
     allowed-origins: ${CORS_ALLOWED_ORIGINS:http://localhost:5500,http://127.0.0.1:5500}
   recognition:
     min-confidence: ${RECOGNITION_MIN_CONFIDENCE:0.5}
+    mode: ${RECOGNITION_MODE:http}
+    base-url: ${RECOGNITION_URL:http://localhost:8000}
+    connect-timeout: ${RECOGNITION_CONNECT_TIMEOUT:2s}
+    read-timeout: ${RECOGNITION_READ_TIMEOUT:30s}
